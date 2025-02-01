@@ -13,14 +13,14 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title" style="
-                text-align: center; 
-                font-weight: bold; 
-                font-size: 1.2rem; 
-                color: #4CAF50; 
-                background-color: #f9f9f9; 
-                padding: 10px; 
-                border-radius: 5px; 
-                margin-bottom: 15px; 
+                text-align: center;
+                font-weight: bold;
+                font-size: 1.2rem;
+                color: #4CAF50;
+                background-color: #f9f9f9;
+                padding: 10px;
+                border-radius: 5px;
+                margin-bottom: 15px;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
                 Salfa - Admin IN
             </li>
@@ -40,24 +40,38 @@
                 </li>
 
 
-                <li class="sidebar-title">Kelola Data IN</li>
+                {{-- <li class="sidebar-title">Kelola Data IN</li> --}}
 
 
                 <li class="sidebar-item  ">
-                    <a href="form-layout.html" class='sidebar-link'>
+                    <a href="/peserta" class='sidebar-link'>
                         <i class="bi bi-person-check"></i>
-                        <span>Peserta Aktif</span>
+                        <span>Kelola Peserta Aktif</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item  ">
+                    <a href="/peserta" class='sidebar-link'>
+                        <i class="bi bi-person-check"></i>
+                        <span>Kelola Peserta NonAktif</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item  ">
+                    <a href="/absensi" class='sidebar-link'>
+                        <i class="bi bi-brightness-alt-high"></i>
+                        <span>Absensi Peserta</span>
+                    </a>
+                </li>
+
+                {{-- <li class="sidebar-item  ">
                     <a href="form-layout.html" class='sidebar-link'>
                         <i class="bi bi-file-check"></i>
                         <span>Kelengkapan Administrasi</span>
                     </a>
                 </li>
 
-                
+
                 <li class="sidebar-item  ">
                     <a href="form-layout.html" class='sidebar-link'>
                         <i class="bi bi-people"></i>
@@ -91,7 +105,7 @@
 
                 <li class="sidebar-item  ">
                     <a href="application-email.html" class='sidebar-link'>
-                        <i class="bi bi-dice-1"></i>         
+                        <i class="bi bi-dice-1"></i>
                          <span>Absen Zumba Senin</span>
                     </a>
                 </li>
@@ -103,7 +117,7 @@
                     </a>
                 </li>
 
-             
+
                 <li class="sidebar-item  ">
                     <a href="application-email.html" class='sidebar-link'>
                         <i class="bi bi-droplet"></i>
@@ -136,7 +150,7 @@
                         <i class="bi bi-box-arrow-left"></i>
                         <span>Logout</span>
                     </a>
-                </li>
+                </li> --}}
 
             </ul>
         </div>

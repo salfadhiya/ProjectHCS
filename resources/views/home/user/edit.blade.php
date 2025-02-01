@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Admin Human Capital Servis')
+@section('title', 'Edit Admin Human Capital Servis')
 @section('content')
 
 <div class="section">
@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h6>Edit data admin: </h6>
-                    
+
                 </div>
                 <div class="card-body">
 
@@ -61,13 +61,13 @@
                                 <option value="Admin OUT" {{ $user->role == 'Admin OUT' ? 'selected' : '' }}>Admin OUT</option>
                             </select>
                         </div>
-                        
+
                         <a href="/user" class="btn btn-secondary">Kembali</a>
                         <button class="btn btn-primary" type="submit">Submit</button>
-                
+
                     </form>
-                    
-                      
+
+
                 </div>
             </div>
         </div>

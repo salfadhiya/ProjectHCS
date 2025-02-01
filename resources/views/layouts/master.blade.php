@@ -18,9 +18,28 @@
     <link rel="stylesheet" href="../../assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="../../assets/css/app.css">
     <link rel="shortcut icon" href="../../assets/images/favicon.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+
 </head>
 
 <body>
+
+    {{-- @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new Choices(".choices", {
+                searchEnabled: true, // Mengaktifkan fitur pencarian
+                itemSelectText: "", // Menghapus teks default saat memilih
+                placeholder: true,
+                shouldSort: false, // Menonaktifkan sorting otomatis
+            });
+        });
+    </script>
+    @endsection --}}
+
+
     <div id="app">
         @include('layouts.sidebar')
         <div id="main">
@@ -51,7 +70,7 @@
         let table1 = document.querySelector('#table1');
         let dataTable = new simpleDatatables.DataTable(table1);
     </script>
-    
+
     <script src="../../assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -75,7 +94,7 @@
             timer: 4000
           });
         @endif
-      
+
         // Handle logout confirmation
         document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('logoutLink').addEventListener('click', function(event) {
@@ -98,7 +117,7 @@
         });
       });
       </script> --}}
-      
+
 </body>
 
 </html>

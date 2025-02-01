@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Admin Human Capital Servis')
+@section('title', 'Admin - Human Capital Servis')
 @section('content')
 
 <div class="section">
