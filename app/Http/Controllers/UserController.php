@@ -37,7 +37,7 @@ class UserController extends Controller
             'role'=> $request->role,
         ]);
 
-        return redirect('/user');
+        return redirect('/user')->with('success', 'Admin Berhasil Ditambahkan!');
     }
 
     /**
@@ -64,7 +64,7 @@ class UserController extends Controller
     {
         $user= User::find($id);
         $user->update($request->all());
-        return redirect('/user')->with("success","Data berhasil diedit");
+        return redirect('/user')->with("success","Data Admin Berhasil Di Update");
     }
 
     /**

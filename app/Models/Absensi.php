@@ -33,5 +33,6 @@ class Absensi extends Model
     };
 }
 
-    
+
+
 }

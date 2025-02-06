@@ -56,6 +56,7 @@
                         <div class="mb-3">
                             <label for="role" class="form-label">Role</label>
                             <select class="form-select" name="role" id="role">
+                                <option value="Admin General" {{ $user->role == 'Admin General' ? 'selected' : '' }}>Admin General</option>
                                 <option value="Admin IN" {{ $user->role == 'Admin IN' ? 'selected' : '' }}>Admin IN</option>
                                 <option value="Admin Maintenance" {{ $user->role == 'Admin Maintenance' ? 'selected' : '' }}>Admin Maintenance</option>
                                 <option value="Admin OUT" {{ $user->role == 'Admin OUT' ? 'selected' : '' }}>Admin OUT</option>
@@ -63,7 +64,7 @@
                         </div>
 
                         <a href="/user" class="btn btn-secondary">Kembali</a>
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
 
                     </form>
 

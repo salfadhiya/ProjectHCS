@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Peserta - Human Capital Servis')
+@section('title', 'Peserta Aktif - Human Capital Servis')
 @section('content')
 
 <div class="section">
@@ -7,19 +7,24 @@
         <div class="row">
             <div class="card">
                 <div class="card-header">
-                    <a href="/peserta/tambah" class="btn btn-primary">Tambah Data Peserta Baru</a>
-                    <br><br>
-                    <h6>Berikut data peserta :</h6>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4>Berikut data peserta aktif:</h4>
+                        <div class="d-flex gap-2">
+                            <a href="/peserta/tambah" class="btn btn-primary">Tambah Data Peserta Baru</a>
+                    <a href="{{ route('laporan', ['status_keaktifan' => 'aktif']) }}" class="btn btn-success">Laporan Peserta Aktif</a>
+                    </div>
+
+                    
                 </div>
                 <div class="card-body">
-                    <table class="table table-stripped " id="table1">
+                    <table class="table table-stripped" id="table1">
                         <thead>
                             <tr>
                                 <th>Nomor</th>
                                 <th>ID Presensi</th>
                                 <th>ID Apply</th>
+                                <th>Nama</th>
                                 <th>Nomor Kartu</th>
-                                    {{-- <th>Nama</th> --}}
                                 <th>Status Keaktifan</th>
                                 <th>Status Kepesertaan</th>
                                 <th>Jenis Kelamin</th>
@@ -40,13 +45,14 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$peserta->id_peserta}}</td>
                                 <td>{{$peserta->id_apply}}</td>
+                                <td>{{$peserta->onboarding->nama}}</td>
                                 <td>{{$peserta->nomor_kartu}}</td>
                                 <td>
                                     @php
                                         $status = $peserta->status_keaktifan ?? 'tidak diketahui';
                                         $badgeClass = match($status) {
                                             'aktif' => 'bg-success',
-                                            'nonaktif' => 'bg-danger',
+                                            'tidak aktif' => 'bg-danger',
                                             default => 'bg-secondary'
                                         };
                                     @endphp
@@ -77,8 +83,9 @@
                                             <a class="dropdown-item" href="/peserta/{{$peserta->id_peserta}}/edit">Lengkapi data</a>
                                             @else
                                             <a class="dropdown-item" href="/peserta/{{$peserta->id_peserta}}/edit">Edit</a>
-                                            <a class="dropdown-item" href="/peserta/{{$peserta->id_peserta}}/delete">Delete</a>
+                                            <a class="dropdown-item" href="/peserta/{{$peserta->id_peserta}}/status">Ubah Status</a>
                                             <a class="dropdown-item" href="/peserta/{{$peserta->id_peserta}}/nilai">Nilai Peserta</a>
+                                            <a class="dropdown-item" href="/peserta/{{$peserta->id_peserta}}/delete">Delete</a>
                                             @endif
                                         </div>
                                 </td>

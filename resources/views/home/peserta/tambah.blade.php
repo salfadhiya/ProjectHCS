@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Tambah Peserta - Admin Human Capital Servis')
+@section('title', 'Tambah Peserta Aktif - Admin Human Capital Servis')
 @section('content')
 
 
@@ -16,12 +16,13 @@
                     <form action="/peserta/simpan" method="POST">
                         @csrf
 
-
-
-                        <div class="form-floating mb-3">
-                            <input  type="number" class="form-control" id="floatingInput" name="id_apply"
-                                placeholder="Masukkan ID Apply">
-                            <label for="floatingInput">ID Apply</label>
+                        <div class="mb-3">
+                            <label for="" class="form-label">ID Apply - Nama</label>
+                            <select class="form-control" name="id_apply" id="id_apply">
+                                @foreach ($onboarding as $item)
+                                    <option value="{{ $item->id_apply }}">{{ $item->id_apply }} - {{ $item->nama }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-floating mb-3">
@@ -29,7 +30,6 @@
                                 placeholder="Masukkan Nomor Kartu">
                             <label for="floatingInput">Nomor Kartu</label>
                         </div>
-
 
                         <div class="form-floating mb-3 d-flex">
                             <div class="w-50 me-2">
@@ -110,61 +110,20 @@
                             @enderror
                         </div>
 
-
                         <div class="form-floating mb-3">
                             <input  type="email" class="form-control" id="floatingInput" name="email"
                                 placeholder="Masukkan Email">
                             <label for="floatingInput">Email</label>
                         </div>
 
-
-                        <div class="col">
-                             <div class="form-group">
-                                <label for="floatingInput">Bulan Berakhir</label>
-                                <br>
-                                <input list="shapes" name="bulan_berakhir" class="form-control" placeholder="Tentukan Bulan Berakhir">
-                                <datalist id="shapes">
-                                    <option value="Januari">
-                                    <option value="Februari">
-                                    <option value="Maret">
-                                    <option value="April">
-                                    <option value="Mei">
-                                    <option value="Juni">
-                                    <option value="Juli">
-                                    <option value="Agustus">
-                                    <option value="Oktober">
-                                    <option value="September">
-                                    <option value="November">
-                                    <option value="Desember">
-                                </datalist>
-                            </div>
-                        </div>
-
-
-
-                        <div class="form-floating mb-3">
-                            <input  type="number" class="form-control" id="floatingInput" name="tahun_berakhir"
-                                placeholder="Masukkan Tahun Berakhir">
-                            <label for="floatingInput">Tahun Berakhir</label>
-                        </div>
-
-
-
-
                         <a href="/peserta" class="btn btn-primary">Kembali</a>
                         <button class="btn btn-success" type="submit">Simpan Data</button>
 
                     </form>
-
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
 
 @endsection

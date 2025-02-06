@@ -19,8 +19,9 @@
     <link rel="stylesheet" href="../../assets/css/app.css">
     <link rel="shortcut icon" href="../../assets/images/favicon.svg" type="image/x-icon">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -58,6 +59,9 @@
 
         </div>
     </div>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script src="../../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 
@@ -66,16 +70,20 @@
 
     <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
     <script>
-        // Simple Datatable
+        // Simple DataTable untuk table1
         let table1 = document.querySelector('#table1');
-        let dataTable = new simpleDatatables.DataTable(table1);
+        let dataTable1 = new simpleDatatables.DataTable(table1);
+
+        // Simple DataTable untuk table2
+        let table2 = document.querySelector('#table2');
+        let dataTable2 = new simpleDatatables.DataTable(table2);
     </script>
 
     <script src="../../assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-    {{-- <script>
+    <script>
         // Handling SweetAlert2 flash messages
         @if(session('success'))
           Swal.fire({
@@ -95,29 +103,84 @@
           });
         @endif
 
-        // Handle logout confirmation
-        document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('logoutLink').addEventListener('click', function(event) {
-          event.preventDefault(); // Prevent the default link behavior
-          Swal.fire({
-            title: 'Konfirmasi Logout',
-            text: "Anda yakin ingin keluar dari akun ini?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, logout',
-            cancelButtonText: 'Batal'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              // Redirect to logout route
-              window.location.href = '{{ route("actionLogout") }}';
-            }
-          });
-        });
-      });
-      </script> --}}
+      </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".delete-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                let userId = this.getAttribute("data-id");
+
+                Swal.fire({
+                    title: "Apakah Anda yakin?",
+                    text: "Data akan dihapus dan tidak bisa dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Ya, hapus!",
+                    cancelButtonText: "Batal"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/user/" + userId + "/delete";
+                    }
+                });
+            });
+        });
+    });
+    </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".delete-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                let kelengkapanadministrasiId = this.getAttribute("data-id");
+
+                Swal.fire({
+                    title: "Apakah Anda yakin?",
+                    text: "Data akan dihapus dan tidak bisa dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Ya, hapus!",
+                    cancelButtonText: "Batal"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/kelengkapanadministrasi/" + kelengkapanadministrasiId + "/delete";
+                    }
+                });
+            });
+        });
+    });
+    </script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("logout-btn").addEventListener("click", function(event) {
+            event.preventDefault(); // Mencegah langsung redirect
+
+            Swal.fire({
+                title: "Yakin ingin logout?",
+                text: "Anda harus login kembali untuk mengakses sistem.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, logout!",
+                cancelButtonText: "Batal"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/logout"; // Sesuaikan dengan route logout
+                }
+            });
+        });
+    });
+</script>
+
+
+<!-- Include Select2 JS -->
 </body>
 
 </html>

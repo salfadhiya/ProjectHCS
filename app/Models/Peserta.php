@@ -52,5 +52,9 @@ public function nilai()
     return $this->hasMany(Nilai::class, 'id_peserta', 'id_peserta');
 }
 
+public function onboarding()
+{
+    return $this->belongsTo(Onboarding::class, 'id_apply', 'id_apply'); // Relasi ke id_apply di Onboarding
+}
 
 }

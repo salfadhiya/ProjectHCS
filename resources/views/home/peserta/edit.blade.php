@@ -39,15 +39,15 @@
                                     <option value="tidak aktif" {{ old('status_keaktifan', $peserta->status_keaktifan) == 'tidak aktif' ? 'selected' : '' }}>Tidak Aktif</option>
                                 </select>
                             </div>
-                        
+
 
                             <div class="w-50">
                                 <label>Status Kepesertaan</label>
                                 <select name="status_kepesertaan" class="form-select">
                                     <option value="" {{ old('status_kepesertaan', $peserta->status_kepesertaan) == '' ? 'selected' : '' }}>Pilih</option>
-                                    <option value="PKL" {{ old('status_kepesertaan', $peserta->status_kepesertaan) == 'PKL' ? 'selected' : '' }}>PKL</option>
-                                    <option value="KP" {{ old('status_kepesertaan', $peserta->status_kepesertaan) == 'KP' ? 'selected' : '' }}>KP</option>
-                                    <option value="TA" {{ old('status_kepesertaan', $peserta->status_kepesertaan) == 'TA' ? 'selected' : '' }}>TA</option>
+                                    <option value="pkl" {{ old('status_kepesertaan', $peserta->status_kepesertaan) == 'pkl' ? 'selected' : '' }}>PKL</option>
+                                    <option value="kp" {{ old('status_kepesertaan', $peserta->status_kepesertaan) == 'kp' ? 'selected' : '' }}>KP</option>
+                                    <option value="ta" {{ old('status_kepesertaan', $peserta->status_kepesertaan) == 'ta' ? 'selected' : '' }}>ta</option>
                                 </select>
                             </div>
                         </div>

@@ -22,8 +22,7 @@
                 border-radius: 5px;
                 margin-bottom: 15px;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
-                Salfa - Admin IN
-            </li>
+  {{Auth::user()->name}} - {{Auth::user()->role}}            </li>
                 <li class="sidebar-title">Menu Utama</li>
                 <li class="sidebar-item  ">
                     <a href="/" class='sidebar-link'>
@@ -40,8 +39,19 @@
                 </li>
 
 
-                {{-- <li class="sidebar-title">Kelola Data IN</li> --}}
+                <li class="sidebar-item  ">
+                    <a href="/kelengkapanadministrasi" class='sidebar-link'>
+                        <i class="bi bi-file-earmark-lock"></i>
+                        <span>Kelengkapan Administrasi</span>
+                    </a>
+                </li>
 
+                <li class="sidebar-item  ">
+                    <a href="/onboarding" class='sidebar-link'>
+                        <i class="bi bi-list-check"></i>
+                        <span>On Boarding</span>
+                    </a>
+                </li>
 
                 <li class="sidebar-item  ">
                     <a href="/peserta" class='sidebar-link'>
@@ -51,11 +61,12 @@
                 </li>
 
                 <li class="sidebar-item  ">
-                    <a href="/peserta" class='sidebar-link'>
-                        <i class="bi bi-person-check"></i>
-                        <span>Kelola Peserta NonAktif</span>
+                    <a href="/peserta/nonaktif" class='sidebar-link'>
+                        <i class="bi bi-person-dash"></i>
+                        <span>Kelola Peserta Nonaktif</span>
                     </a>
                 </li>
+
 
                 <li class="sidebar-item  ">
                     <a href="/absensi" class='sidebar-link'>
@@ -64,92 +75,23 @@
                     </a>
                 </li>
 
-                {{-- <li class="sidebar-item  ">
-                    <a href="form-layout.html" class='sidebar-link'>
-                        <i class="bi bi-file-check"></i>
-                        <span>Kelengkapan Administrasi</span>
-                    </a>
-                </li>
-
 
                 <li class="sidebar-item  ">
-                    <a href="form-layout.html" class='sidebar-link'>
+                    <a href="/maintenance" class='sidebar-link'>
                         <i class="bi bi-people"></i>
-                        <span>On Boarding</span>
+                        <span>Rekap Maintenance</span>
                     </a>
                 </li>
 
-
-                <li class="sidebar-item  ">
-                    <a href="form-layout.html" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-lock"></i>
-                        <span>On Boarding (private) </span>
-                    </a>
-                </li>
-
-                <li class="sidebar-title">Kelola Data Maintenace</li>
-
-                <li class="sidebar-item  ">
-                    <a href="application-email.html" class='sidebar-link'>
-                        <i class="bi bi-exclamation-octagon"></i>
-                        <span>Sefty Induction</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="application-email.html" class='sidebar-link'>
-                        <i class="bi bi-brightness-alt-high"></i>
-                        <span>Absen Jogging</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="application-email.html" class='sidebar-link'>
-                        <i class="bi bi-dice-1"></i>
-                         <span>Absen Zumba Senin</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="application-email.html" class='sidebar-link'>
-                        <i class="bi bi-dice-5"></i>
-                        <span>Absen Zumba Jumat</span>
-                    </a>
+                <li class="sidebar-item">
+                    <button type="submit" id="logout-btn" class="sidebar-link btn btn-danger w-100 text-start d-flex align-items-center gap-2">
+                        <i class="bi bi-box-arrow-left"></i> Logout
+                    </button>
                 </li>
 
 
-                <li class="sidebar-item  ">
-                    <a href="application-email.html" class='sidebar-link'>
-                        <i class="bi bi-droplet"></i>
-                        <span>Absen Dhuha</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="application-email.html" class='sidebar-link'>
-                        <i class="bi bi-egg"></i>
-                        <span>Absen Makan Siang</span>
-                    </a>
-                </li>
-
-
-                <li class="sidebar-title">Kelola Data Out</li>
-
-                <li class="sidebar-item  ">
-                    <a href="application-email.html" class='sidebar-link'>
-                        <i class="bi bi-person-dash"></i>
-                        <span>Peserta Tidak Aktif</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-title">Sistem</li>
-
-
-                <li class="sidebar-item  ">
-                    <a href="application-email.html" class='sidebar-link'>
-                        <i class="bi bi-box-arrow-left"></i>
-                        <span>Logout</span>
-                    </a>
+                {{-- <li class="sidebar-item">
+                    <a href="#" id="logout-btn"  class="btn btn-danger">Logout</a>
                 </li> --}}
 
             </ul>

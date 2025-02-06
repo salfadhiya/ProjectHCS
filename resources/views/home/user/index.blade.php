@@ -8,9 +8,10 @@
             <div class="card">
                 <div class="card-header">
 
-                    <a href="/user/tambah" class="btn btn-primary">Tambah Data Admin</a>
-                    <br><br>
-                    <h6>Berikut data admin :</h6>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4>Berikut data admin :</h4>
+                        <a href="/user/tambah" class="btn btn-primary">Tambah data admin</a>
+                    </div>
                 </div>
                 <div class="card-body">
 
@@ -35,7 +36,7 @@
                                 <td>{{$user->role}}</td>
                                 <td>
                                     <a href="/user/{{$user->id}}/edit" class="btn btn-warning">Edit</a>
-                                    <a href="/user/{{$user->id}}/delete" class="btn btn-danger" onclick= "return confirm('Apa anda yakin akan menghapus data?')">Hapus</a>
+                                    <a href="javascript:void(0)" class="btn btn-danger delete-btn" data-id="{{ $user->id }}">Hapus</a>
                                 </td>
                             </tr>
                             @endforeach

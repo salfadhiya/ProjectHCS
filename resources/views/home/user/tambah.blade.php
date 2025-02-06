@@ -36,6 +36,7 @@
                             <select required name="role" class="form-select" id="floatingSelect"
                                 aria-label="Floating label select example">
                                 <option selected>Pilih</option>
+                                <option value="Admin General">Admin General</option>
                                 <option value="Admin IN">Admin IN</option>
                                 <option value="Admin Maintenace">Admin Maintenace</option>
                                 <option value="Admin OUT">Admin OUT</option>
@@ -43,7 +44,7 @@
                             <label for="floatingSelect">Role</label>
                         </div>
 
-                        <a href="/user" class="btn btn-primary">Kembali</a> -
+                        <a href="/user" class="btn btn-primary">Kembali</a>
                         <button class="btn btn-success" type="submit">Simpan Data</button>
 
                     </form>

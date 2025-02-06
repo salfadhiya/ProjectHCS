@@ -8,9 +8,14 @@
             <div class="card">
                 <div class="card-header">
 
-                    <a href="{{ route('absensi.create') }}" class="btn btn-primary" target="_blank">Lihat Form Presensi</a>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4>Berikut data absensi:</h4>
+                        <a href="{{ route('absensi.create') }}" class="btn btn-primary" target="_blank">Lihat Form Presensi</a>
+                    </div>
+
+                    {{-- <a href="{{ route('absensi.create') }}" class="btn btn-primary" target="_blank">Lihat Form Presensi</a>
                     <br><br>
-                    <h6>Berikut data absensi:</h6>
+                    <h6>Berikut data absensi:</h6> --}}
                 </div>
                 <div class="card-body">
                     {{-- @dd($absensis)   --}}
