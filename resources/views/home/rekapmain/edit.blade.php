@@ -24,7 +24,7 @@
                         <form action="{{ route('maintenance.update', $maintenance->peserta->id_peserta) }}" method="POST">
                             @csrf
                             @method('PUT')
-                            
+
                             <!-- Form untuk Nama -->
                             <div class="mb-3">
                                 <label for="nama" class="form-label">Nama</label>

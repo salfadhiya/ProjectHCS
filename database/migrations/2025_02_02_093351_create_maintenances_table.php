@@ -14,17 +14,17 @@ return new class extends Migration
         Schema::create('maintenances', function (Blueprint $table) {
             $table->id();
             $table->string('id_peserta', 255);
-            $table->integer('sakit')->default(0);
-            $table->integer('izin')->default(0);
-            $table->integer('alfa')->default(0);
-            $table->integer('terlambat')->default(0);
-            $table->integer('wfh')->default(0);
-            $table->integer('project')->default(0);
-            $table->integer('zumba')->default(0);
-            $table->integer('dhuha')->default(0);
-            $table->enum('sharing', ['yes', 'no'])->default('no');
-            $table->enum('saction', ['yes', 'no'])->default('no');
-            $table->enum('backchecking', ['yes', 'no'])->default('no');
+            $table->integer('sakit')->nullable()->default(0);
+            $table->integer('izin')->nullable()->default(0);
+            $table->integer('alfa')->nullable()->default(0);
+            $table->integer('terlambat')->nullable()->default(0);
+            $table->integer('wfh')->nullable()->default(0);
+            $table->integer('project')->nullable()->default(0);
+            $table->integer('zumba')->nullable()->default(0);
+            $table->integer('dhuha')->nullable()->default(0);
+            $table->enum('sharing', ['yes', 'no'])->nullable()->default('no');
+            $table->enum('saction', ['yes', 'no'])->nullable()->default('no');
+            $table->enum('backchecking', ['yes', 'no'])->nullable()->default('no');
             $table->string('sp', 255)->nullable();
             $table->timestamps();
 

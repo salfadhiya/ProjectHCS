@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Peserta;
 use App\Models\Nilai;
 use App\Models\Onboarding;
+use App\Models\Maintenance;
 use Illuminate\Support\Facades\Log; // Importing Log facade
 use Illuminate\Support\Facades\DB; // Importing DB facade
 use Dompdf\Dompdf;
@@ -104,6 +105,21 @@ class PesertaController extends Controller
             'interaksi_sosial' => 0,
             'rata_rata' => 0,
             'jumlah' => 0,
+        ]);
+
+        // Simpan data ke tabel Maintenance
+        Maintenance::create([
+            'id_peserta' => $peserta->id_peserta,
+            'id_onboarding' => $onboarding->id_onboarding ?? null,
+            'sakit' => null,
+            'izin' => null,
+            'alfa' => null,
+            'terlambat' => null,
+            'wfh' => null,
+            'project' => null,
+            'sharing' => null,
+            'backchecking' => null,
+            'sp' => null,
         ]);
 
         return redirect('/peserta')->with('success', 'Form berhasil dikirim!');

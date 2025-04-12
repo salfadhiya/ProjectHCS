@@ -25,7 +25,7 @@ return new class extends Migration
             $table->date('tanggal_surat_konfirmasi')->nullable();
             $table->string('link_surat_konfirmasi')->nullable();
             $table->timestamps();
-
+//
             // Foreign key ke tabel Onboardings
             $table->foreign('id_apply')->references('id_apply')->on('onboardings')->onDelete('cascade');
         });

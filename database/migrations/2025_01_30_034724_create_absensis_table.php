@@ -16,7 +16,7 @@ return new class extends Migration
             $table->enum('presensi', ['Hadir', 'Tidak Hadir']);
             $table->enum('jenis_absensi', ['zumat', 'zumin', 'jogging', 'dhuha', 'saction', 'lunch']);
             $table->timestamps();
-
+//
             // Foreign key ke tabel Peserta
             $table->foreign('id_peserta')->references('id_peserta')->on('pesertas')->onDelete('cascade');
         });
