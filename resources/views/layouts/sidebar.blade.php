@@ -3,7 +3,10 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-center">
                 <div class="logo">
-                    <a href="/"><img src="../../assets/images/logo/pfplen.png" alt="Logo" srcset=""></a>
+                    <a href="/">
+                        <img src="../../assets/images/logo/logo2.jpg" alt="Logo"
+                             style="width: 200px; height: 70px; object-fit: cover; border-radius: 10px;">
+                      </a>
                 </div>
                 <div class="toggler">
                     <a href="/" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -12,24 +15,25 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-title" style="
+                <li class="sidebar-user" style="
                 text-align: center;
-                font-weight: bold;
-                font-size: 1.2rem;
-                color: #4CAF50;
-                background-color: #f9f9f9;
-                padding: 10px;
-                border-radius: 5px;
-                margin-bottom: 15px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
-  {{Auth::user()->name}} - {{Auth::user()->role}}            </li>
-                <li class="sidebar-title">Menu Utama</li>
-                <li class="sidebar-item  ">
-                    <a href="/" class='sidebar-link'>
-                        <i class="bi bi-house"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
+                font-weight: 600;
+                font-size: 1rem;
+                color: #ffffff;
+                background: linear-gradient(to right, #B71C1C, #D32F2F);
+                padding: 14px;
+                border-radius: 10px;
+                margin: 15px 20px 25px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                line-height: 1.5;
+                font-family: 'Segoe UI', sans-serif;
+            ">
+                {{ Auth::user()->name }}<br>
+                <span style="font-size: 0.85rem; font-weight: 400; color: #ffdddd;">
+                    {{ Auth::user()->role }}
+                </span>
+            </li>
+
 
                 <li class="sidebar-item  ">
                     <a href="/user" class='sidebar-link'>
@@ -89,10 +93,6 @@
                     </button>
                 </li>
 
-
-                {{-- <li class="sidebar-item">
-                    <a href="#" id="logout-btn"  class="btn btn-danger">Logout</a>
-                </li> --}}
 
             </ul>
         </div>
