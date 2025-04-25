@@ -1,101 +1,115 @@
+<!-- Sidebar Start -->
 <div id="sidebar" class="active">
     <div class="sidebar-wrapper active">
-        <div class="sidebar-header">
-            <div class="d-flex justify-content-center">
-                <div class="logo">
-                    <a href="/">
-                        <img src="../../assets/images/logo/logo2.jpg" alt="Logo"
-                             style="width: 200px; height: 70px; object-fit: cover; border-radius: 10px;">
-                      </a>
-                </div>
-                <div class="toggler">
-                    <a href="/" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-                </div>
+
+        <!-- Sidebar Header dengan Logo -->
+        <div class="sidebar-header d-flex justify-content-center align-items-center" style="height: 100px;">
+            <div style="background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px); padding: 10px 20px; border-radius: 12px;">
+                <a href="/">
+                    <img src="../../assets/images/logo/logo2.jpg" alt="Logo"
+                         style="width: 260px; height: auto; object-fit: contain;">
+                </a>
             </div>
         </div>
+        <hr style="border: 0; -top: 1px solid #dee2e6; margin: 20px 40px;">
+
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-user" style="
-                text-align: center;
-                font-weight: 600;
-                font-size: 1rem;
-                color: #ffffff;
-                background: linear-gradient(to right, #B71C1C, #D32F2F);
-                padding: 14px;
-                border-radius: 10px;
-                margin: 15px 20px 25px;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-                line-height: 1.5;
-                font-family: 'Segoe UI', sans-serif;
-            ">
-                {{ Auth::user()->name }}<br>
-                <span style="font-size: 0.85rem; font-weight: 400; color: #ffdddd;">
-                    {{ Auth::user()->role }}
-                </span>
-            </li>
+                <!-- User Info -->
+                <li class="sidebar-user mx-4 mt-2 mb-3 p-3 rounded-4 d-flex flex-column align-items-center"
+                    style="background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); font-family: 'Segoe UI', sans-serif; border: 1px solid rgba(0, 0, 0, 0.05);">
 
+                    <div class="mb-2">
+                        <i class="bi bi-person-circle" style="font-size: 2.2rem; color: #495057;"></i>
+                    </div>
 
-                <li class="sidebar-item  ">
-                    <a href="/user" class='sidebar-link'>
-                        <i class="bi bi-person-circle"></i>
-                        <span>Data Admin</span>
+                    <div style="font-weight: 600; font-size: 1rem; color: #212529;">
+                        {{ Auth::user()->name }}
+                    </div>
+
+                    <div style="font-size: 0.85rem; font-weight: 400; color: #6c757d;">
+                        {{ ucfirst(Auth::user()->role) }}
+                    </div>
+                </li>
+
+                <!-- Navigasi Utama -->
+                <li class="sidebar-title">Navigasi Utama</li>
+                <li class="sidebar-item {{ Request::is('/') ? 'active' : '' }}">
+                    <a href="/" class="sidebar-link">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Dashboard</span>
                     </a>
                 </li>
 
+                <!-- Manajemen Akun -->
+                <li class="sidebar-title">Manajemen Akun</li>
+                <li class="sidebar-item {{ Request::is('user') ? 'active' : '' }}">
+                    <a href="/user" class="sidebar-link">
+                        <i class="bi bi-person-circle"></i>
+                        <span>Kelola Admin</span>
+                    </a>
+                </li>
 
-                <li class="sidebar-item  ">
-                    <a href="/kelengkapanadministrasi" class='sidebar-link'>
+                <!-- Data Peserta -->
+                <li class="sidebar-title">Data Peserta</li>
+                <li class="sidebar-item {{ Request::is('peserta') ? 'active' : '' }}">
+                    <a href="/peserta" class="sidebar-link">
+                        <i class="bi bi-person-check"></i>
+                        <span>Peserta Aktif</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ Request::is('peserta/nonaktif') ? 'active' : '' }}">
+                    <a href="/peserta/nonaktif" class="sidebar-link">
+                        <i class="bi bi-person-dash"></i>
+                        <span>Peserta Tidak Aktif</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ Request::is('absensi') ? 'active' : '' }}">
+                    <a href="/absensi" class="sidebar-link">
+                        <i class="bi bi-calendar-check"></i>
+                        <span>Presensi</span>
+                    </a>
+                </li>
+
+                <!-- Dokumentasi & Proses -->
+                <li class="sidebar-title">Dokumentasi & Proses</li>
+                <li class="sidebar-item {{ Request::is('kelengkapanadministrasi') ? 'active' : '' }}">
+                    <a href="/kelengkapanadministrasi" class="sidebar-link">
                         <i class="bi bi-file-earmark-lock"></i>
                         <span>Kelengkapan Administrasi</span>
                     </a>
                 </li>
-
-                <li class="sidebar-item  ">
-                    <a href="/onboarding" class='sidebar-link'>
+                <li class="sidebar-item {{ Request::is('onboarding') ? 'active' : '' }}">
+                    <a href="/onboarding" class="sidebar-link">
                         <i class="bi bi-list-check"></i>
-                        <span>On Boarding</span>
+                        <span>Proses Onboarding</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item  ">
-                    <a href="/peserta" class='sidebar-link'>
-                        <i class="bi bi-person-check"></i>
-                        <span>Kelola Peserta Aktif</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="/peserta/nonaktif" class='sidebar-link'>
-                        <i class="bi bi-person-dash"></i>
-                        <span>Kelola Peserta Nonaktif</span>
-                    </a>
-                </li>
-
-
-                <li class="sidebar-item  ">
-                    <a href="/absensi" class='sidebar-link'>
-                        <i class="bi bi-brightness-alt-high"></i>
-                        <span>Absensi Peserta</span>
-                    </a>
-                </li>
-
-
-                <li class="sidebar-item  ">
-                    <a href="/maintenance" class='sidebar-link'>
-                        <i class="bi bi-people"></i>
+                <!-- Laporan -->
+                <li class="sidebar-title">Laporan</li>
+                <li class="sidebar-item {{ Request::is('maintenance') ? 'active' : '' }}">
+                    <a href="/maintenance" class="sidebar-link">
+                        <i class="bi bi-tools"></i>
                         <span>Rekap Maintenance</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <button type="submit" id="logout-btn" class="sidebar-link btn btn-danger w-100 text-start d-flex align-items-center gap-2">
-                        <i class="bi bi-box-arrow-left"></i> Logout
+                <!-- Logout -->
+                <li class="sidebar-title">Sistem</li>
+                <li class="sidebar-item mt-4">
+                    <button type="submit" id="logout-btn"
+                        class="sidebar-link d-flex align-items-center gap-2 text-danger px-3 py-2 w-100"
+                        style="background-color: transparent; border: none; font-weight: 500; font-size: 0.95rem;">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Logout</span>
                     </button>
                 </li>
-
-
             </ul>
         </div>
-        <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+
+        <button class="sidebar-toggler btn x">
+            <i data-feather="x"></i>
+        </button>
     </div>
 </div>

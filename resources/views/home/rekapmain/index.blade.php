@@ -1,107 +1,110 @@
 @extends('layouts.master')
-@section('title', 'Rekapan Data Absensi - Human Capital Service')
+@section('title', 'Human Capital Service')
 @section('content')
 
-    <style>
-        /* Menata tabel agar teks berada di tengah */
-        .table td,
-        .table th {
-            text-align: center;
-            /* Menyusun teks secara horizontal di tengah */
-            vertical-align: middle;
-            /* Menyusun teks secara vertikal di tengah */
-        }
-    </style>
-
-    <div class="section">
-        <div class="col-12 col-lg-12">
-            <div class="row">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Berikut data Rekapan Maintenance:</h4>
+<div class="section">
+    <div class="col-12 col-lg-12">
+        <div class="row">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0 fw-semibold">Data Rekap Presensi</h5>
+                        <br>
+                        <br>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-striped table-bordered" id="table1">
-                            <thead>
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>Presensi</th>
-                                    <th>Status</th>
-                                    <th>Asal Instansi</th>
-                                    <th>Sakit</th>
-                                    <th>Izin</th>
-                                    <th>Alfa</th>
-                                    <th>Terlambat</th>
-                                    <th>WFH</th>
-                                    <th>Project</th>
-                                    <th>Zumba</th>
-                                    <th>Dhuha</th>
-                                    <th>Knowledge Sharing</th>
-                                    <th>Safety Induction</th>
-                                    <th>Background Checking</th>
-                                    <th>Surat Peringatan</th>
-                                    <th>Aksi</th> <!-- Kolom untuk tombol aksi -->
+                </div>
+
+                <div class="card-body px-0">
+                    <div class="table-responsive px-3">
+                        <table class="table table-striped table-bordered mb-0" id="table1">
+                            <thead class="text-muted small text-uppercase">
+                                <tr class="border-bottom">
+                                    <th class="border-end">No</th>
+                                    <th class="border-end">Nama</th>
+                                    <th class="border-end">Presensi</th>
+                                    <th class="border-end">Status</th>
+                                    <th class="border-end">Asal Instansi</th>
+                                    <th class="border-end">Sakit</th>
+                                    <th class="border-end">Izin</th>
+                                    <th class="border-end">Alfa</th>
+                                    <th class="border-end">Terlambat</th>
+                                    <th class="border-end">WFH</th>
+                                    <th class="border-end">Project</th>
+                                    <th class="border-end">Zumba</th>
+                                    <th class="border-end">Dhuha</th>
+                                    <th class="border-end">Knowledge Sharing</th>
+                                    <th class="border-end">Safety Induction</th>
+                                    <th class="border-end">Background Checking</th>
+                                    <th class="border-end">Surat Peringatan</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @dd($rekapanData)   --}}
                                 @foreach ($rekapanData as $data)
-                                    <tr>
-                                        <td>{{ $data['nama'] }}</td>
-                                        <td>{{ $data['presensi'] }}</td>
-                                        <td>{{ $data['status'] }}</td>
-                                        <td>{{ $data['asal_instansi'] }}</td>
-                                        <td>{{ $data['sakit'] }}</td>
-                                        <td>{{ $data['izin'] }}</td>
-                                        <td>{{ $data['alfa'] }}</td>
-                                        <td>{{ $data['terlambat'] }}</td>
-                                        <td>{{ $data['wfh'] }}</td>
-                                        <td>{{ $data['project'] }}</td>
-                                        <td>{{ $data['zumba'] }}</td>
-                                        <td>{{ $data['dhuha'] }}</td>
-                                        <td>{{ $data['knowledge_sharing'] }}</td>
-                                        <td>{{ $data['safety_induction'] }}</td>
-                                        <td>{{ $data['background_checking'] }}</td>
-                                        <td>{{ $data['surat_peringatan'] }}</td>
+                                    <tr class="border-bottom align-middle hover-shadow-sm">
+                                        <td class="fw-medium text-muted">{{ $loop->iteration }}</td>
+                                        <td class="border-end">{{ $data['nama'] }}</td>
+                                        <td class="border-end">{{ $data['presensi'] }}</td>
+                                        <td class="border-end">{{ $data['status'] }}</td>
+                                        <td class="border-end">{{ $data['asal_instansi'] }}</td>
+                                        <td class="border-end">{{ $data['sakit'] }}</td>
+                                        <td class="border-end">{{ $data['izin'] }}</td>
+                                        <td class="border-end">{{ $data['alfa'] }}</td>
+                                        <td class="border-end">{{ $data['terlambat'] }}</td>
+                                        <td class="border-end">{{ $data['wfh'] }}</td>
+                                        <td class="border-end">{{ $data['project'] }}</td>
+                                        <td class="border-end">{{ $data['zumba'] }}</td>
+                                        <td class="border-end">{{ $data['dhuha'] }}</td>
+                                        <td class="border-end">
+                                            @if($data['knowledge_sharing'] == 'yes')
+                                                <span class="badge bg-success">Ya</span> <!-- Badge hijau jika "Ya" -->
+                                            @else
+                                                <span class="badge bg-danger">Tidak</span> <!-- Badge merah jika "Tidak" -->
+                                            @endif
+                                        </td>
+                                        <td class="border-end">{{ $data['safety_induction'] }}</td>
+                                        <td class="border-end">
+                                            @if($data['background_checking'] == 'yes')
+                                                <span class="badge bg-success">Ya</span> <!-- Badge hijau jika "Ya" -->
+                                            @else
+                                                <span class="badge bg-danger">Tidak</span> <!-- Badge merah jika "Tidak" -->
+                                            @endif
+                                        </td>
+                                                                                                                        <td class="border-end">{{ $data['surat_peringatan'] }}</td>
 
-                                        <td>
-                                            <button class="btn btn-secondary dropdown-toggle me-1" type="button"
-                                                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
-                                                Aksi
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item"
-                                                    href="{{ route('maintenance.edit', $data['presensi']) }}">Edit</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ route('maintenance.destroy', $data['presensi']) }}"
-                                                    onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin menghapus data ini?')) document.getElementById('delete-form-{{ $data['presensi'] }}').submit();">
-                                                    Delete
+                                        <td class="text-center">
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <!-- Tombol Edit -->
+                                                <a href="{{ route('maintenance.edit', $data['presensi']) }}" class="btn btn-sm btn-outline-warning me-1" title="Edit">
+                                                    <i class="bi bi-pencil-square me-1"></i>
                                                 </a>
 
-                                                <form id="delete-form-{{ $data['presensi'] }}"
-                                                    action="{{ route('maintenance.destroy', $data['presensi']) }}"
-                                                    method="POST" style="display: none;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form>
-
+                                                <!-- Tombol Delete -->
+                                                <button class="btn btn-sm btn-outline-danger delete-btn" data-id="{{ $data['presensi'] }}" title="Hapus">
+                                                    <i class="bi bi-trash me-1"></i>
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>
                                 @endforeach
 
-
+                                @if($rekapanData->count() === 0)
+                                <tr>
+                                    <td colspan="17" class="text-center text-muted py-4">
+                                        <em>Belum ada data absensi yang terdaftar.</em>
+                                    </td>
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
-
-                        <!-- Pastikan untuk memuat Bootstrap Icons (untuk ikon Edit dan Hapus) -->
-                        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Pastikan untuk memuat Bootstrap Icons (untuk ikon Edit dan Hapus) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 @endsection

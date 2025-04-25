@@ -116,6 +116,43 @@
                             <label for="floatingInput">Email</label>
                         </div>
 
+
+                        <div class="row">
+                            <!-- Bulan Berakhir -->
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input
+                                        type="month"
+                                        class="form-control @error('bulan_berakhir') is-invalid @enderror"
+                                        name="bulan_berakhir"
+                                        id="bulan_berakhir"
+                                        value="{{ old('bulan_berakhir') }}"
+                                        placeholder="Pilih Bulan Berakhir">
+                                    <label for="bulan_berakhir">Bulan Berakhir</label>
+                                    @error('bulan_berakhir')
+                                        <div class="invalid-feedback">*{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- Tahun Berakhir -->
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input
+                                        type="number"
+                                        class="form-control @error('tahun_berakhir') is-invalid @enderror"
+                                        name="tahun_berakhir"
+                                        id="tahun_berakhir"
+                                        value="{{ old('tahun_berakhir') }}"
+                                        placeholder="Masukkan Tahun Berakhir"
+                                        min="2000" max="2099" step="1">
+                                    <label for="tahun_berakhir">Tahun Berakhir</label>
+                                    @error('tahun_berakhir')
+                                        <div class="invalid-feedback">*{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>  
                         <a href="/peserta" class="btn btn-primary">Kembali</a>
                         <button class="btn btn-success" type="submit">Simpan Data</button>
 

@@ -1,27 +1,27 @@
 @extends('layouts.master')
-@section('title', 'Peserta NonAktif - Human Capital Servis')
+@section('title', 'Human Capital Service')
 @section('content')
+
 <div class="section">
     <div class="col-12 col-lg-12">
         <div class="row">
-            <div class="card">
-                <div class="card-header">
-
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white py-3">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4>Berikut data peserta nonaktif:</h4>
-                        <a href="{{ route('laporan', ['status_keaktifan' => 'tidak aktif']) }}"  class="btn btn-danger">Laporan Peserta Nonaktif</a>
+                        <h5 class="mb-0 fw-semibold">Data Peserta Tidak Aktif</h5>
+                        <br>
+                        <br>
+                        <a href="{{ route('laporan', ['status_keaktifan' => 'tidak aktif']) }}" class="btn btn-sm btn-danger">
+                            <i class="bi bi-file-earmark-text me-1"></i> Laporan Peserta Nonaktif
+                        </a>
                     </div>
-
-                    {{-- <a href="{{ route('laporan', ['status_keaktifan' => 'tidak aktif']) }}" class="btn btn-danger">Laporan Peserta Nonaktif</a>
-                    <br><br>
-                    <h6>Berikut data peserta nonaktif:</h6> --}}
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped" id="table1">
-                            <thead>
-                                <tr>
-                                    <th>Nomor</th>
+                <div class="card-body px-0">
+                    <div class="table-responsive px-3">
+                        <table class="table table-striped table-bordered mb-0" id="table2">
+                            <thead class="text-muted small text-uppercase">
+                                <tr class="border-bottom">
+                                    <th>No</th>
                                     <th>ID Presensi</th>
                                     <th>ID Apply</th>
                                     <th>Nama</th>
@@ -42,48 +42,56 @@
                             </thead>
                             <tbody>
                                 @foreach ($peserta as $peserta)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$peserta->id_peserta}}</td>
-                                    <td>{{$peserta->id_apply}}</td>
-                                    <td>{{$peserta->onboarding->nama}}</td>
-                                    <td>{{$peserta->nomor_kartu}}</td>
-                                    <td>
-                                        @php
-                                            $status = $peserta->status_keaktifan ?? 'tidak diketahui';
-                                            $badgeClass = match($status) {
-                                                'aktif' => 'bg-success',
-                                                'tidak aktif' => 'bg-danger',
-                                                default => 'bg-secondary'
-                                            };
-                                        @endphp
-
-                                        <span class="badge {{ $badgeClass }}">
-                                            {{ ucfirst($status) }}
-                                        </span>
-                                    </td>
-                                    <td>{{$peserta->status_kepesertaan}}</td>
-                                    <td>{{$peserta->jk}}</td>
-                                    <td>{{$peserta->gdg_penempatan}}</td>
-                                    <td>{{$peserta->pembimbing_perusahaan}}</td>
-                                    <td>{{$peserta->unit_penempatan}}</td>
-                                    <td>{{$peserta->jenis_pekerjaan}}</td>
-                                    <td>{{$peserta->reguler_msib}}</td>
-                                    <td>{{$peserta->email}}</td>
-                                    <td>{{$peserta->bulan_berakhir}}</td>
-                                    <td>{{$peserta->tahun_berakhir}}</td>
-                                    <td>
-                                        <button class="btn btn-secondary dropdown-toggle me-1" type="button"
-                                            id="dropdownMenuButton" data-bs-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                            Aksi
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="/peserta/{{$peserta->id_peserta}}/status">Ubah Status</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                    <tr class="border-bottom align-middle hover-shadow-sm">
+                                        <td class="fw-medium text-muted">{{ $loop->iteration }}</td>
+                                        <td>{{ $peserta->id_peserta }}</td>
+                                        <td>{{ $peserta->id_apply }}</td>
+                                        <td>{{ $peserta->onboarding->nama }}</td>
+                                        <td>{{ $peserta->nomor_kartu }}</td>
+                                        <td>
+                                            @php
+                                                $status = $peserta->status_keaktifan ?? 'tidak diketahui';
+                                                $badgeClass = match($status) {
+                                                    'aktif' => 'bg-success',
+                                                    'tidak aktif' => 'bg-danger',
+                                                    default => 'bg-secondary'
+                                                };
+                                            @endphp
+                                            <span class="badge {{ $badgeClass }}">
+                                                {{ ucfirst($status) }}
+                                            </span>
+                                        </td>
+                                        <td>{{ $peserta->status_kepesertaan }}</td>
+                                        <td>{{ $peserta->jk }}</td>
+                                        <td>{{ $peserta->gdg_penempatan }}</td>
+                                        <td>{{ $peserta->pembimbing_perusahaan }}</td>
+                                        <td>{{ $peserta->unit_penempatan }}</td>
+                                        <td>{{ $peserta->jenis_pekerjaan }}</td>
+                                        <td>{{ $peserta->reguler_msib }}</td>
+                                        <td>{{ $peserta->email }}</td>
+                                        <td>{{ $peserta->bulan_berakhir }}</td>
+                                        <td>{{ $peserta->tahun_berakhir }}</td>
+                                        <td>
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle me-1" type="button"
+                                                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="bi bi-three-dots me-1"></i> Aksi
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="/peserta/{{$peserta->id_peserta}}/status">Ubah Status</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @endforeach
+
+                                @if($peserta->count() === 0)
+                                    <tr>
+                                        <td colspan="17" class="text-center text-muted py-4">
+                                            <em>Belum ada data peserta nonaktif.</em>
+                                        </td>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -92,7 +100,8 @@
         </div>
     </div>
 </div>
+
+<!-- Pastikan untuk memuat Bootstrap Icons (untuk ikon Laporan) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
 @endsection
-
-
-

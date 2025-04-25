@@ -64,18 +64,17 @@ class AbsensiController extends Controller
     /**
      * Menampilkan form untuk mengedit absensi.
      */
-    public function edit(Absensi $absensi)
-    {
-        // Tampilkan view form edit dengan data absensi
-        return view('absensi.edit', compact('absensi'));
-    }
+    // public function edit(Absensi $absensi)
+    // {
+    //     // Tampilkan view form edit dengan data absensi
+    //     return view('absensi.edit', compact('absensi'));
+    // }
 
-    /**
-     * Mengupdate absensi di database.
-     */
-    public function update(Request $request, Absensi $absensi)
-    {
-     }
+    // /**
+   
+    // public function update(Request $request, Absensi $absensi)
+    // {
+    //  }
 
     /**
      * Menghapus absensi dari database.

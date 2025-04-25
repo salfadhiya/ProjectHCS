@@ -62,11 +62,11 @@ class KelengkapanAdministrasiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        $kelengkapanadministrasi = KelengkapanAdministrasi::find($id);
-        return view('home.kelengkapanadministrasi.edit', compact('kelengkapanadministrasi'));
-    }
+    // public function show(string $id)
+    // {
+    //     $kelengkapanadministrasi = KelengkapanAdministrasi::find($id);
+    //     return view('home.kelengkapanadministrasi.edit', compact('kelengkapanadministrasi'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
