@@ -152,9 +152,19 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>  
-                        <a href="/peserta" class="btn btn-primary">Kembali</a>
-                        <button class="btn btn-success" type="submit">Simpan Data</button>
+                        </div>
+
+                       
+
+                    <!-- Tombol Submit -->
+                    <div class="d-flex justify-content-start">
+                        <a href="/peserta" class="btn btn-outline-secondary me-2">
+                            <i class="bi bi-arrow-left-circle me-2"></i>Kembali
+                        </a>
+                        <button class="btn btn-success" type="submit">
+                            <i class="bi bi-save me-2"></i>Simpan Data
+                        </button>
+                    </div>
 
                     </form>
                 </div>

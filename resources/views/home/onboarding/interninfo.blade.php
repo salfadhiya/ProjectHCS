@@ -21,11 +21,11 @@
                     <h6>Berikut data admin :</h6> --}}
                 </div>
                 <div class="card-body">
-
-                    <table class="table table-stripped " id="table1">
+                    <div class="table-responsive px-3">
+                    <table class="table table-striped table-bordered mb-0" id="table1">
                         <thead>
                             <tr>
-                                <th>Nomor</th>
+                                <th>No</th>
                                 <th>Nomor Form</th>
                                 <th>Nama</th>
                                 <th>NIS/NIM/NIP</th>

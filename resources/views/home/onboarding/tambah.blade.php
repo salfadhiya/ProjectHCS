@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Tambah Data Peserta On Boarding')
+@section('title', '')
 @section('content')
 
 <div class="section">
@@ -7,8 +7,10 @@
         <div class="row">
             <div class="card">
                 <div class="card-header">
-                    <h6>Mohon masukan data dengan benar!</h6>
-                </div>
+                    <br>
+                    <h5 class="mb-0 fw-semibold">Tambah Data Peserta Onboarding</h5>
+                    <br>
+                  </div>
                 <div class="card-body">
                 <form action="{{ route('onboarding.store')}}" method="POST">
                     @if ($errors->any())
@@ -93,9 +95,17 @@
                             placeholder=""
                         />
                     </div>
-                   </div>
-                   <a href="/onboarding" class="btn btn-primary">Kembali</a>
-                   <button class="btn btn-success" type="submit">Simpan</button>
+                    </div>
+                        <!-- Tombol Submit -->
+                        <div class="d-flex justify-content-start">
+                        <a href="/onboarding" class="btn btn-outline-secondary me-2">
+                            <i class="bi bi-arrow-left-circle me-2"></i>Kembali
+                        </a>
+                        <button class="btn btn-success" type="submit">
+                            <i class="bi bi-save me-2"></i>Simpan Data
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </div>

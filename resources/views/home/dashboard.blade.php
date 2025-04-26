@@ -1,348 +1,118 @@
 @extends('layouts.master')
-@section('title', 'Human Capital Service - PT. Len ')
+@section('title', 'Human Capital Services')
+
 @section('content')
-    
-<section class="row">
-    <div class="col-12 col-lg-12">
-        <div class="row">
-            <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-body px-3 py-4-5">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="stats-icon purple">
-                                    <i class="iconly-boldShow"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">Peserta Aktif</h6>
-                                <h6 class="font-extrabold mb-0">112.000</h6>
-                            </div>
-                        </div>
+
+<div class="section py-4 px-3">
+    <h4 class="fw-semibold mb-4">Statistik Terkini</h4>
+
+    {{-- Statistik Kartu --}}
+    <div class="row g-3 mb-5">
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body d-flex align-items-center">
+                    <div class="bg-light rounded-circle p-3 me-3">
+                        <i class="bi bi-people-fill fs-4 text-primary"></i>
                     </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-body px-3 py-4-5">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="stats-icon blue">
-                                    <i class="iconly-boldProfile"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">Peserta IN</h6>
-                                <h6 class="font-extrabold mb-0">183.000</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-body px-3 py-4-5">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="stats-icon green">
-                                    <i class="iconly-boldAdd-User"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">Peserta OUT</h6>
-                                <h6 class="font-extrabold mb-0">80.000</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-body px-3 py-4-5">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="stats-icon red">
-                                    <i class="iconly-boldBookmark"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <h6 class="text-muted font-semibold">Saved Post</h6>
-                                <h6 class="font-extrabold mb-0">112</h6>
-                            </div>
-                        </div>
+                    <div>
+                        <p class="mb-0 small text-muted">Peserta Aktif</p>
+                        <h5 class="fw-bold">112.000</h5>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Riwayat Peserta Aktif</h3>
-                <p class="text-subtitle text-muted">Berikut Data terlampir :</p>
-            </div>
-        </div>
-
-        <section class="section">
-            <div class="card">
-                {{-- <div class="card-header">
-                   
-                </div> --}}
-                <div class="card-body">
-                    <table class="table table-bordered" id="table1">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>City</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Graiden</td>
-                                <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                <td>076 4820 8838</td>
-                                <td>Offenburg</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dale</td>
-                                <td>fringilla.euismod.enim@quam.ca</td>
-                                <td>0500 527693</td>
-                                <td>New Quay</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Nathaniel</td>
-                                <td>mi.Duis@diam.edu</td>
-                                <td>(012165) 76278</td>
-                                <td>Grumo Appula</td>
-                                <td>
-                                    <span class="badge bg-danger">Inactive</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Darius</td>
-                                <td>velit@nec.com</td>
-                                <td>0309 690 7871</td>
-                                <td>Ways</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Oleg</td>
-                                <td>rhoncus.id@Aliquamauctorvelit.net</td>
-                                <td>0500 441046</td>
-                                <td>Rossignol</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Kermit</td>
-                                <td>diam.Sed.diam@anteVivamusnon.org</td>
-                                <td>(01653) 27844</td>
-                                <td>Patna</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Jermaine</td>
-                                <td>sodales@nuncsit.org</td>
-                                <td>0800 528324</td>
-                                <td>Mold</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ferdinand</td>
-                                <td>gravida.molestie@tinciduntadipiscing.org</td>
-                                <td>(016977) 4107</td>
-                                <td>Marlborough</td>
-                                <td>
-                                    <span class="badge bg-danger">Inactive</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Kuame</td>
-                                <td>Quisque.purus@mauris.org</td>
-                                <td>(0151) 561 8896</td>
-                                <td>Tresigallo</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Deacon</td>
-                                <td>Duis.a.mi@sociisnatoquepenatibus.com</td>
-                                <td>07740 599321</td>
-                                <td>Karapınar</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Channing</td>
-                                <td>tempor.bibendum.Donec@ornarelectusante.ca</td>
-                                <td>0845 46 49</td>
-                                <td>Warrnambool</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Aladdin</td>
-                                <td>sem.ut@pellentesqueafacilisis.ca</td>
-                                <td>0800 1111</td>
-                                <td>Bothey</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Cruz</td>
-                                <td>non@quisturpisvitae.ca</td>
-                                <td>07624 944915</td>
-                                <td>Shikarpur</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Keegan</td>
-                                <td>molestie.dapibus@condimentumDonecat.edu</td>
-                                <td>0800 200103</td>
-                                <td>Assen</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ray</td>
-                                <td>placerat.eget@sagittislobortis.edu</td>
-                                <td>(0112) 896 6829</td>
-                                <td>Hofors</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Maxwell</td>
-                                <td>diam@dapibus.org</td>
-                                <td>0334 836 4028</td>
-                                <td>Thane</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Carter</td>
-                                <td>urna.justo.faucibus@orci.com</td>
-                                <td>07079 826350</td>
-                                <td>Biez</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Stone</td>
-                                <td>velit.Aliquam.nisl@sitametrisus.com</td>
-                                <td>0800 1111</td>
-                                <td>Olivar</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Berk</td>
-                                <td>fringilla.porttitor.vulputate@taciti.edu</td>
-                                <td>(0101) 043 2822</td>
-                                <td>Sanquhar</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Philip</td>
-                                <td>turpis@euenimEtiam.org</td>
-                                <td>0500 571108</td>
-                                <td>Okara</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Kibo</td>
-                                <td>feugiat@urnajustofaucibus.co.uk</td>
-                                <td>07624 682306</td>
-                                <td>La Cisterna</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Bruno</td>
-                                <td>elit.Etiam.laoreet@luctuslobortisClass.edu</td>
-                                <td>07624 869434</td>
-                                <td>Rocca d"Arce</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Leonard</td>
-                                <td>blandit.enim.consequat@mollislectuspede.net</td>
-                                <td>0800 1111</td>
-                                <td>Lobbes</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hamilton</td>
-                                <td>mauris@diam.org</td>
-                                <td>0800 256 8788</td>
-                                <td>Sanzeno</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Harding</td>
-                                <td>Lorem.ipsum.dolor@etnetuset.com</td>
-                                <td>0800 1111</td>
-                                <td>Obaix</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Emmanuel</td>
-                                <td>eget.lacus.Mauris@feugiatSednec.org</td>
-                                <td>(016977) 8208</td>
-                                <td>Saint-Remy-Geest</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body d-flex align-items-center">
+                    <div class="bg-light rounded-circle p-3 me-3">
+                        <i class="bi bi-person-plus-fill fs-4 text-success"></i>
+                    </div>
+                    <div>
+                        <p class="mb-0 small text-muted">Peserta IN</p>
+                        <h5 class="fw-bold">183.000</h5>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body d-flex align-items-center">
+                    <div class="bg-light rounded-circle p-3 me-3">
+                        <i class="bi bi-person-dash-fill fs-4 text-danger"></i>
+                    </div>
+                    <div>
+                        <p class="mb-0 small text-muted">Peserta OUT</p>
+                        <h5 class="fw-bold">80.000</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body d-flex align-items-center">
+                    <div class="bg-light rounded-circle p-3 me-3">
+                        <i class="bi bi-bookmark-fill fs-4 text-warning"></i>
+                    </div>
+                    <div>
+                        <p class="mb-0 small text-muted">Saved Post</p>
+                        <h5 class="fw-bold">112</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        </section>
+    {{-- Data Admin --}}
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+            <h5 class="mb-0 fw-semibold">Data Admin</h5>
+            <br>
+        </div>
 
+        <div class="card-body px-0">
+            <div class="table-responsive px-3">
+                <table class="table table-striped table-bordered mb-0" id="table1">
+                    <thead class="text-muted small text-uppercase">
+                        <tr class="border-bottom">
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($user as $admin)
+                        <tr class="align-middle">
+                            <td class="fw-medium text-muted">{{ $loop->iteration }}</td>
+                            <td class="fw-semibold">{{ $admin->name }}</td>
+                            <td>{{ $admin->email }}</td>
+                            <td><span class="badge bg-light text-muted">Terenkripsi</span></td>
+                            <td>
+                                @if($admin->role == 'Admin IN')
+                                    <span class="badge bg-primary">{{ $admin->role }}</span>
+                                @elseif($admin->role == 'Admin Maintenance')
+                                    <span class="badge bg-warning text-dark">{{ $admin->role }}</span>
+                                @elseif($admin->role == 'Admin OUT')
+                                    <span class="badge bg-danger">{{ $admin->role }}</span>
+                                @else
+                                    <span class="badge bg-secondary">{{ $admin->role }}</span>
+                                @endif
+                            </td>
 
-</section>
-
-
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="6" class="text-center text-muted py-4">
+                                <em>Belum ada data admin yang terdaftar.</em>
+                            </td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

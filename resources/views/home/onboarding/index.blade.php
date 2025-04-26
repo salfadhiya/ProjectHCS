@@ -13,8 +13,8 @@
                             <a href="/onboarding/tambah" class="btn btn-sm btn-primary d-flex align-items-center">
                                 <i class="bi bi-plus-square me-1"></i> Tambah Data Peserta
                             </a>
-                            <a href="/onboarding/interninfo" class="btn btn-sm btn-info d-flex align-items-center">
-                                <i class="bi bi-person-lines-fill me-1"></i> Data Private
+                            {{-- <a href="/onboarding/interninfo" class="btn btn-sm btn-info d-flex align-items-center">
+                                <i class="bi bi-person-lines-fill me-1"></i> Data Private --}}
                             </a>
                         </div>
                     </div>
@@ -48,7 +48,10 @@
                                         <div class="d-flex justify-content-center align-items-center">
                                             <!-- Tombol Edit -->
                                             <a href="/onboarding/{{$data->id_apply}}/edit" class="btn btn-sm btn-outline-warning me-1" title="Edit">
-                                                <i class="bi bi-pencil-square me-1"></i> 
+                                                <i class="bi bi-pencil-square me-1"></i>
+                                            </a>
+                                            <a href="/onboarding/{{$data->id_apply}}/edit" class="btn btn-sm btn-outline-success me-1" title="Edit">
+                                                <i class="bi bi-arrow-left-circle me-2"></i>
                                             </a>
 
                                             <!-- Tombol Hapus -->

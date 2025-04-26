@@ -161,6 +161,12 @@
                                 <input type="file" class="form-control" id="surat_pernyataan" name="surat_pernyataan" accept="application/pdf" required>
                             </div>
 
+                             <!-- Upload File PDF Surat Pernyataan -->
+                             <div class="mb-3">
+                                <label for="surat_pernyataan" class="form-label">Upload Surat Background Checking (pdf)</label>
+                                <input type="file" class="form-control" id="surat_pernyataan" name="surat_pernyataan" accept="application/pdf" required>
+                            </div>
+
                             <!-- Tombol Submit -->
                             <div class="text-center mt-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>

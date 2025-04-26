@@ -13,7 +13,8 @@ class DashboardController extends Controller
     public function index()
     {
         $usercount = user::count();
-        return view("home.dashboard", compact ("usercount"));
+        $user = User::all(); // Ambil semua data user
+        return view("home.dashboard", compact ("usercount", "user"));
     }
 
     /**

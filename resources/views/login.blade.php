@@ -148,7 +148,7 @@
             <form action="/actionLogin" method="POST" id="loginForm">
                 @csrf
                 <div class="input-group">
-                    <label for="email">Email atau Nama pengguna</label>
+                    <label for="email">Email   </label>
                     <input type="text" id="email" name="email" placeholder="Masukkan email atau nama pengguna Anda">
                     <div class="invalid-feedback">*Silakan masukkan email atau nama pengguna yang valid.</div>
                 </div>

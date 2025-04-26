@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Absensi</title>
+    <title>Form Presensi</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -88,7 +88,7 @@
             <div class="col-md-6">
                 <div class="card shadow">
                     <div class="card-header text-center">
-                        <h4>Form Absensi</h4>
+                        <h4>Form Presensi</h4>
                     </div>
                     <div class="card-body">
                         @if ($errors->any())
