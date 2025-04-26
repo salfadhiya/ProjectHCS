@@ -54,14 +54,18 @@
                                                 <i class="bi bi-arrow-left-circle me-2"></i>
                                             </a>
 
-                                            <!-- Tombol Hapus -->
+                                            <button class="btn btn-sm btn-outline-danger delete-btn" data-id="{{ $data->id }}" title="Hapus">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+
+                                            {{-- <!-- Tombol Hapus -->
                                             <form action="{{ route('onboarding.destroy', $data->id_apply) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Apa Anda yakin akan menghapus data?')" title="Hapus">
                                                     <i class="bi bi-trash me-1"></i>
                                                 </button>
-                                            </form>
+                                            </form> --}}
                                         </div>
                                     </td>
                                 </tr>

@@ -42,6 +42,15 @@ class OnBoardingController extends Controller
      */
     public function store(Request $request)
     {
+        // $validated = $request->validate([
+        //     'nama' => 'required|string|max:255',
+        //     'jurusan' => 'required|string|max:255',
+        //     'no_telp' => 'required|numeric',
+        //     'asal_instansi' => 'required|string|max:255',
+        //     'tanggal_mulai' => 'required|date',
+        //     'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai',
+        // ]);
+
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
             'jurusan' => 'required|string|max:255',
@@ -49,6 +58,28 @@ class OnBoardingController extends Controller
             'asal_instansi' => 'required|string|max:255',
             'tanggal_mulai' => 'required|date',
             'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai',
+        ], [
+            'nama.required' => 'Nama peserta wajib diisi.',
+            'nama.string' => 'Nama peserta harus berupa teks.',
+            'nama.max' => 'Nama peserta maksimal 255 karakter.',
+
+            'jurusan.required' => 'Jurusan peserta wajib diisi.',
+            'jurusan.string' => 'Jurusan harus berupa teks.',
+            'jurusan.max' => 'Jurusan maksimal 255 karakter.',
+
+            'no_telp.required' => 'Nomor telepon wajib diisi.',
+            'no_telp.numeric' => 'Nomor telepon hanya boleh berupa angka.',
+
+            'asal_instansi.required' => 'Asal instansi wajib diisi.',
+            'asal_instansi.string' => 'Asal instansi harus berupa teks.',
+            'asal_instansi.max' => 'Asal instansi maksimal 255 karakter.',
+
+            'tanggal_mulai.required' => 'Tanggal mulai wajib diisi.',
+            'tanggal_mulai.date' => 'Tanggal mulai harus berupa format tanggal yang valid.',
+
+            'tanggal_berakhir.required' => 'Tanggal berakhir wajib diisi.',
+            'tanggal_berakhir.date' => 'Tanggal berakhir harus berupa format tanggal yang valid.',
+            'tanggal_berakhir.after_or_equal' => 'Tanggal berakhir tidak boleh lebih awal dari tanggal mulai.',
         ]);
 
         $onboarding = OnBoarding::create([
