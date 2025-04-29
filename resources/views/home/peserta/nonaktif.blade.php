@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-body px-0">
                     <div class="table-responsive px-3">
-                        <table class="table table-striped table-bordered mb-0" id="table2">
+                        <table class="table table-striped table-bordered mb-0" id="table1">
                             <thead class="text-muted small text-uppercase">
                                 <tr class="border-bottom">
                                     <th>No</th>
@@ -105,3 +105,4 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 @endsection
+

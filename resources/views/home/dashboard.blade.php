@@ -1,118 +1,106 @@
 @extends('layouts.master')
-@section('title', 'Human Capital Services')
-
+@section('title', 'Human Capital Service   |  PT. Len Industri (Persero)')
 @section('content')
 
-<div class="section py-4 px-3">
-    <h4 class="fw-semibold mb-4">Statistik Terkini</h4>
+<section class="row">
+    <div class="col-12">
+        <div class="row g-4">
+            @php
+                $cards = [
+                    [
+                        'label' => 'Admin General',
+                        'count' => $adminGeneral,
+                        'color' => 'bg-primary',
+                        'icon' => 'bi-people-fill' 
+                    ],
+                    [
+                        'label' => 'Admin IN',
+                        'count' => $adminIn,
+                        'color' => 'bg-info',
+                        'icon' => 'bi-box-arrow-in-right'
+                    ],
+                    [
+                        'label' => 'Admin Maintenance',
+                        'count' => $adminMaintenance,
+                        'color' => 'bg-success',
+                        'icon' => 'bi-tools'
+                    ],
+                    [
+                        'label' => 'Admin OUT',
+                        'count' => $adminOut,
+                        'color' => 'bg-danger',
+                        'icon' => 'bi-box-arrow-right'
+                    ],
+                ];
+            @endphp
 
-    {{-- Statistik Kartu --}}
-    <div class="row g-3 mb-5">
-        <div class="col-md-3">
-            <div class="card shadow-sm border-0">
-                <div class="card-body d-flex align-items-center">
-                    <div class="bg-light rounded-circle p-3 me-3">
-                        <i class="bi bi-people-fill fs-4 text-primary"></i>
-                    </div>
-                    <div>
-                        <p class="mb-0 small text-muted">Peserta Aktif</p>
-                        <h5 class="fw-bold">112.000</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card shadow-sm border-0">
-                <div class="card-body d-flex align-items-center">
-                    <div class="bg-light rounded-circle p-3 me-3">
-                        <i class="bi bi-person-plus-fill fs-4 text-success"></i>
-                    </div>
-                    <div>
-                        <p class="mb-0 small text-muted">Peserta IN</p>
-                        <h5 class="fw-bold">183.000</h5>
+            @foreach ($cards as $card)
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body d-flex align-items-center gap-3 p-4">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center {{ $card['color'] }}" style="width: 50px; height: 50px;">
+                            <i class="bi {{ $card['icon'] }} text-white fs-5"></i>
+                        </div>
+                        <div>
+                            <p class="mb-1 text-muted small">{{ $card['label'] }}</p>
+                            <h5 class="mb-0 fw-bold">{{ $card['count'] }}</h5>
+                        </div>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
-        <div class="col-md-3">
-            <div class="card shadow-sm border-0">
-                <div class="card-body d-flex align-items-center">
-                    <div class="bg-light rounded-circle p-3 me-3">
-                        <i class="bi bi-person-dash-fill fs-4 text-danger"></i>
+
+        {{-- Grafik --}}
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-white border-bottom-0">
+                        <h5 class="mb-0 fw-bold">Grafik Peserta Onboarding per Bulan</h5>
                     </div>
-                    <div>
-                        <p class="mb-0 small text-muted">Peserta OUT</p>
-                        <h5 class="fw-bold">80.000</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card shadow-sm border-0">
-                <div class="card-body d-flex align-items-center">
-                    <div class="bg-light rounded-circle p-3 me-3">
-                        <i class="bi bi-bookmark-fill fs-4 text-warning"></i>
-                    </div>
-                    <div>
-                        <p class="mb-0 small text-muted">Saved Post</p>
-                        <h5 class="fw-bold">112</h5>
+                    <div class="card-body">
+                        <canvas id="bar"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    {{-- Data Admin --}}
-    <div class="card border-0 shadow-sm">
-        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
-            <h5 class="mb-0 fw-semibold">Data Admin</h5>
-            <br>
-        </div>
-
-        <div class="card-body px-0">
-            <div class="table-responsive px-3">
-                <table class="table table-striped table-bordered mb-0" id="table1">
-                    <thead class="text-muted small text-uppercase">
-                        <tr class="border-bottom">
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>Role</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($user as $admin)
-                        <tr class="align-middle">
-                            <td class="fw-medium text-muted">{{ $loop->iteration }}</td>
-                            <td class="fw-semibold">{{ $admin->name }}</td>
-                            <td>{{ $admin->email }}</td>
-                            <td><span class="badge bg-light text-muted">Terenkripsi</span></td>
-                            <td>
-                                @if($admin->role == 'Admin IN')
-                                    <span class="badge bg-primary">{{ $admin->role }}</span>
-                                @elseif($admin->role == 'Admin Maintenance')
-                                    <span class="badge bg-warning text-dark">{{ $admin->role }}</span>
-                                @elseif($admin->role == 'Admin OUT')
-                                    <span class="badge bg-danger">{{ $admin->role }}</span>
-                                @else
-                                    <span class="badge bg-secondary">{{ $admin->role }}</span>
-                                @endif
-                            </td>
-
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="6" class="text-center text-muted py-4">
-                                <em>Belum ada data admin yang terdaftar.</em>
-                            </td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-
+{{-- Chart JS --}}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('bar').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'Peserta Onboarding',
+                data: @json($onboardingPerBulan),
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                borderRadius: 4,
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 5
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+</script>
 @endsection

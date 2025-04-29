@@ -12,89 +12,90 @@ class MaintenanceController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
-    // Ambil semua data rekapan beserta relasi peserta dan onboarding
-    $rekapanData = Maintenance::with(['peserta.onboarding'])->get()->map(function ($rekapan) {
-        // Mengambil id peserta
-        $idPeserta = $rekapan->peserta->id_peserta;
-        // dd($idPeserta);
-        // Hitung jumlah kegiatan berdasarkan jenis_absensi di tabel absensis
-        $zumbaCount = Absensi::where('id_peserta', $idPeserta)
-                             ->whereIn('jenis_absensi', ['zumat', 'zumin']) // Zumba tergantung jenisnya
-                             ->where('presensi', 'Hadir')
-                             ->count();
-        
-        $dhuhaCount = Absensi::where('id_peserta', $idPeserta)
-                             ->where('jenis_absensi', 'dhuha')
-                             ->where('presensi', 'Hadir')
-                             ->count();
-        
-        $safetyInductionCount = Absensi::where('id_peserta', $idPeserta)
-                                      ->where('jenis_absensi', 'saction')
-                                      ->where('presensi', 'Hadir')
-                                      ->count();
+    {
+        // Ambil semua data rekapan beserta relasi peserta dan onboarding
+        $rekapanData = Maintenance::with(['peserta.onboarding'])->get()->map(function ($rekapan) {
+            // Mengambil id rekapan dan id peserta
+            $idRekapan = $rekapan->id; // Tambahkan ini untuk mendapatkan ID rekapan
+            $idPeserta = $rekapan->peserta->id_peserta;
 
-        // Return data rekapan yang telah diperbarui
-        return [
-            'nama' => $rekapan->peserta->onboarding->nama ?? '-', 
-            'presensi' => $rekapan->peserta->id_peserta ?? '-', 
-            'status' => $rekapan->peserta->status_keaktifan ?? '-', 
-            'asal_instansi' => $rekapan->peserta->onboarding->asal_instansi ?? '-', 
-            'sakit' => $rekapan->sakit,
-            'izin' => $rekapan->izin,
-            'alfa' => $rekapan->alfa,
-            'terlambat' => $rekapan->terlambat,
-            'wfh' => $rekapan->wfh,
-            'project' => $rekapan->project,
-            'zumba' => $zumbaCount,  // Menggunakan jumlah dari Absensi
-            'dhuha' => $dhuhaCount,  // Menggunakan jumlah dari Absensi
-            'knowledge_sharing' => $rekapan->sharing === 'yes' ? 'Ya' : 'Tidak',
-            'safety_induction' => $safetyInductionCount,  // Menggunakan jumlah dari Absensi
-            'background_checking' => $rekapan->backchecking === 'yes' ? 'Ya' : 'Tidak',
-            'surat_peringatan' => $rekapan->sp ?? '-'
-        ];
-    });
+            // Hitung jumlah kegiatan berdasarkan jenis_absensi di tabel absensis
+            $zumbaCount = Absensi::where('id_peserta', $idPeserta)
+                                 ->whereIn('jenis_absensi', ['zumat', 'zumin']) // Zumba tergantung jenisnya
+                                 ->where('presensi', 'Hadir')
+                                 ->count();
 
-    // Kirim data ke view
-    return view('home.rekapmain.index', compact('rekapanData'));
-}
+            $dhuhaCount = Absensi::where('id_peserta', $idPeserta)
+                                 ->where('jenis_absensi', 'dhuha')
+                                 ->where('presensi', 'Hadir')
+                                 ->count();
 
+            $safetyInductionCount = Absensi::where('id_peserta', $idPeserta)
+                                          ->where('jenis_absensi', 'saction')
+                                          ->where('presensi', 'Hadir')
+                                          ->count();
+
+            // Return data rekapan yang telah diperbarui
+            return [
+                'id' => $idRekapan, // Tambahkan ini untuk menyertakan ID rekapan
+                'nama' => $rekapan->peserta->onboarding->nama ?? '-',
+                'presensi' => $rekapan->peserta->id_peserta ?? '-',
+                'status' => $rekapan->peserta->status_keaktifan ?? '-',
+                'asal_instansi' => $rekapan->peserta->onboarding->asal_instansi ?? '-',
+                'sakit' => $rekapan->sakit,
+                'izin' => $rekapan->izin,
+                'alfa' => $rekapan->alfa,
+                'terlambat' => $rekapan->terlambat,
+                'wfh' => $rekapan->wfh,
+                'project' => $rekapan->project,
+                'zumba' => $zumbaCount,  // Menggunakan jumlah dari Absensi
+                'dhuha' => $dhuhaCount,  // Menggunakan jumlah dari Absensi
+                'knowledge_sharing' => $rekapan->sharing === 'yes' ? 'Ya' : 'Tidak',
+                'safety_induction' => $safetyInductionCount,  // Menggunakan jumlah dari Absensi
+                'background_checking' => $rekapan->backchecking === 'yes' ? 'Ya' : 'Tidak',
+                'surat_peringatan' => $rekapan->sp ?? '-'
+            ];
+        });
+
+        // Kirim data ke view
+        return view('home.rekapmain.index', compact('rekapanData'));
+    }
 
     public function create()
     {
         //
     }
 
-   
+
     public function store(Request $request)
     {
         //
     }
 
     // Untuk halaman edit
-    public function edit($id_peserta)
+    public function edit($id)
     {
-        // Ambil data berdasarkan id_peserta
-        $maintenance = Maintenance::whereHas('peserta', function ($query) use ($id_peserta) {
-            $query->where('id_peserta', $id_peserta);
-        })->first(); // Mengambil data pertama sesuai dengan id_peserta
+        // Ambil data berdasarkan ID rekapan
+        $maintenance = Maintenance::find($id);
 
         if (!$maintenance) {
             return redirect()->route('maintenance.index')->with('error', 'Data tidak ditemukan');
         }
 
+        $idPeserta = $maintenance->peserta->id_peserta;
+
         // Hitung jumlah kegiatan berdasarkan jenis_absensi di tabel absensis
-        $zumbaCount = Absensi::where('id_peserta', $id_peserta)
+        $zumbaCount = Absensi::where('id_peserta', $idPeserta)
                              ->whereIn('jenis_absensi', ['zumat', 'zumin'])
                              ->where('presensi', 'Hadir')
                              ->count();
 
-        $dhuhaCount = Absensi::where('id_peserta', $id_peserta)
+        $dhuhaCount = Absensi::where('id_peserta', $idPeserta)
                              ->where('jenis_absensi', 'dhuha')
                              ->where('presensi', 'Hadir')
                              ->count();
 
-        $safetyInductionCount = Absensi::where('id_peserta', $id_peserta)
+        $safetyInductionCount = Absensi::where('id_peserta', $idPeserta)
                                       ->where('jenis_absensi', 'saction')
                                       ->where('presensi', 'Hadir')
                                       ->count();
@@ -103,10 +104,7 @@ class MaintenanceController extends Controller
         return view('home.rekapmain.edit', compact('maintenance', 'zumbaCount', 'dhuhaCount', 'safetyInductionCount'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id_peserta)
+    public function update(Request $request, $id)
     {
         // Validasi input yang diterima dari form
         $validated = $request->validate([
@@ -119,10 +117,8 @@ class MaintenanceController extends Controller
             // Tambahkan validasi lain sesuai kebutuhan
         ]);
 
-        // Cari data berdasarkan id_peserta
-        $maintenance = Maintenance::whereHas('peserta', function ($query) use ($id_peserta) {
-            $query->where('id_peserta', $id_peserta);
-        })->first();
+        // Cari data berdasarkan ID rekapan
+        $maintenance = Maintenance::find($id);
 
         if (!$maintenance) {
             return redirect()->route('maintenance.index')->with('error', 'Data tidak ditemukan');
@@ -142,20 +138,17 @@ class MaintenanceController extends Controller
         return redirect()->route('maintenance.index')->with('success', 'Data berhasil diperbarui');
     }
 
-    public function destroy($id_peserta)
+    public function destroy($id)
     {
-        // Temukan data berdasarkan id_peserta
-        $maintenance = Maintenance::whereHas('peserta', function ($query) use ($id_peserta) {
-            $query->where('id_peserta', $id_peserta);
-        })->first(); // Mengambil data pertama sesuai dengan id_peserta
-    
+        // Temukan data berdasarkan ID rekapan
+        $maintenance = Maintenance::find($id);
+
         if ($maintenance) {
             $maintenance->delete(); // Hapus data maintenance
             return redirect()->route('maintenance.index')->with('success', 'Data berhasil dihapus');
         }
-    
+
         return redirect()->route('maintenance.index')->with('error', 'Data tidak ditemukan');
     }
-
 
 }

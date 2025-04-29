@@ -121,19 +121,27 @@
                             <!-- Bulan Berakhir -->
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input
-                                        type="month"
-                                        class="form-control @error('bulan_berakhir') is-invalid @enderror"
-                                        name="bulan_berakhir"
-                                        id="bulan_berakhir"
-                                        value="{{ old('bulan_berakhir') }}"
-                                        placeholder="Pilih Bulan Berakhir">
+                                    <select name="bulan_berakhir" class="form-select @error('bulan_berakhir') is-invalid @enderror" id="bulan_berakhir">
+                                        <option value="">Pilih Bulan</option>
+                                        <option value="Januari">Januari</option>
+                                        <option value="Februari">Februari</option>
+                                        <option value="Maret">Maret</option>
+                                        <option value="April">April</option>
+                                        <option value="Mei">Mei</option>
+                                        <option value="Juni">Juni</option>
+                                        <option value="Juli">Juli</option>
+                                        <option value="Agustus">Agustus</option>
+                                        <option value="September">September</option>
+                                        <option value="Oktober">Oktober</option>
+                                        <option value="November">November</option>
+                                        <option value="Desember">Desember</option>
+                                    </select>
                                     <label for="bulan_berakhir">Bulan Berakhir</label>
                                     @error('bulan_berakhir')
                                         <div class="invalid-feedback">*{{ $message }}</div>
                                     @enderror
                                 </div>
-                            </div>
+                                                            </div>
 
                             <!-- Tahun Berakhir -->
                             <div class="col-md-6">
@@ -154,7 +162,7 @@
                             </div>
                         </div>
 
-                       
+
 
                     <!-- Tombol Submit -->
                     <div class="d-flex justify-content-start">

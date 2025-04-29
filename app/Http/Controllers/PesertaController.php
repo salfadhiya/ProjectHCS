@@ -122,7 +122,7 @@ class PesertaController extends Controller
             'sp' => null,
         ]);
 
-        return redirect('/peserta')->with('success', 'Form berhasil dikirim!');
+        return redirect('/peserta')->with('success', 'Data berhasil dikirim!');
     }
 
     /**
@@ -161,7 +161,7 @@ class PesertaController extends Controller
         if ($peserta->status_keaktifan == 'aktif') {
             return redirect('/peserta')->with("success", "Data berhasil diedit");
         } else {
-            return redirect('/peserta/nonaktif')->with("success", "Data berhasil diedit");
+            return redirect('/peserta/nonaktif')->with("success", "Data berhasil diupdate!");
         }
     }
 
@@ -177,7 +177,7 @@ class PesertaController extends Controller
         $nilai->delete();
 
         if ($peserta->status_keaktifan == 'aktif') {
-            return redirect('/peserta')->with("success", "Data berhasil dihapus");
+            return redirect('/peserta')->with("success", "Data berhasil dihapus!");
         } else {
             return redirect('/peserta/nonaktif')->with("success", "Data berhasil dihapus");
         }

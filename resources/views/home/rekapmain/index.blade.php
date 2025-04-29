@@ -70,22 +70,21 @@
                                                 <span class="badge bg-danger">Tidak</span> <!-- Badge merah jika "Tidak" -->
                                             @endif
                                         </td>
-                                                                                                                        <td class="border-end">{{ $data['surat_peringatan'] }}</td>
+                                        <td class="border-end">{{ $data['surat_peringatan'] }}</td>
 
                                         <td class="text-center">
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <!-- Tombol Edit -->
-                                                <a href="{{ route('maintenance.edit', $data['presensi']) }}" class="btn btn-sm btn-outline-warning me-1" title="Edit">
+                                                <a href="{{ route('maintenance.edit', $data['id']) }}" class="btn btn-sm btn-outline-warning me-1" title="Edit">
                                                     <i class="bi bi-pencil-square me-1"></i>
                                                 </a>
 
                                                 <!-- Tombol Delete -->
-                                                <button class="btn btn-sm btn-outline-danger delete-btn" data-id="{{ $data['presensi'] }}" title="Hapus">
+                                                <a href="{{ route('maintenance.destroy', $data['id']) }}" class="btn btn-sm btn-outline-danger delete-btn" data-id="{{ $data['id'] }}" title="Hapus">
                                                     <i class="bi bi-trash me-1"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                </a>
+                                                                                            </div>
+                                        </td>                                    </tr>
                                 @endforeach
 
                                 @if($rekapanData->count() === 0)

@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="../../assets/vendors/iconly/bold.css">
 
-    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
+    <link rel="stylesheet" href="../../assets/vendors/simple-datatables/style.css">
 
     <link rel="stylesheet" href="../../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="../../assets/vendors/bootstrap-icons/bootstrap-icons.css">
@@ -68,15 +68,14 @@
     <script src="../../assets/vendors/apexcharts/apexcharts.js"></script>
     <script src="../../assets/js/pages/dashboard.js"></script>
 
-    <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script src="../../assets/vendors/simple-datatables/simple-datatables.js"></script>
     <script>
-        // Simple DataTable untuk table1
+        // Cek table1 ada gak
         let table1 = document.querySelector('#table1');
-        let dataTable1 = new simpleDatatables.DataTable(table1);
+        if (table1) {
+            new simpleDatatables.DataTable(table1);
+        }
 
-        // Simple DataTable untuk table2
-        let table2 = document.querySelector('#table2');
-        let dataTable2 = new simpleDatatables.DataTable(table2);
     </script>
 
     <script src="../../assets/js/main.js"></script>
@@ -107,9 +106,12 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        document.querySelectorAll(".delete-btn").forEach(button => {
-            button.addEventListener("click", function() {
-                let userId = this.getAttribute("data-id");
+        // Tangkap semua tombol/link yang menuju ke hapus/delete
+        document.querySelectorAll('.delete-btn, a[href*="/delete"]').forEach(function(element) {
+            element.addEventListener('click', function(event) {
+                event.preventDefault(); // Jangan langsung hapus
+
+                const href = this.getAttribute('href') || (this.dataset.id ? `/user/${this.dataset.id}/delete` : '#');
 
                 Swal.fire({
                     title: "Apakah Anda yakin?",
@@ -122,62 +124,35 @@
                     cancelButtonText: "Batal"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = "/user/" + userId + "/delete";
+                        window.location.href = href;
                     }
                 });
             });
         });
-    });
-</script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelectorAll(".delete-btn").forEach(button => {
-            button.addEventListener("click", function() {
-                let kelengkapanadministrasiId = this.getAttribute("data-id");
-
+        // Tombol logout khusus
+        const logoutBtn = document.getElementById("logout-btn");
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", function(event) {
+                event.preventDefault();
                 Swal.fire({
-                    title: "Apakah Anda yakin?",
-                    text: "Data akan dihapus dan tidak bisa dikembalikan!",
+                    title: "Yakin ingin logout?",
+                    text: "Anda harus login kembali untuk mengakses sistem.",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
-                    confirmButtonText: "Ya, hapus!",
+                    confirmButtonText: "Ya, logout!",
                     cancelButtonText: "Batal"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = "/kelengkapanadministrasi/" + kelengkapanadministrasiId + "/delete";
+                        window.location.href = this.getAttribute('href');
                     }
                 });
             });
-        });
+        }
     });
     </script>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("logout-btn").addEventListener("click", function(event) {
-            event.preventDefault(); // Mencegah langsung redirect
-
-            Swal.fire({
-                title: "Yakin ingin logout?",
-                text: "Anda harus login kembali untuk mengakses sistem.",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Ya, logout!",
-                cancelButtonText: "Batal"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = "/logout"; // Sesuaikan dengan route logout
-                }
-            });
-        });
-    });
-</script>
 
 
 <!-- Include Select2 JS -->

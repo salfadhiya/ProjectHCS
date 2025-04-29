@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Admin Human Capital Servis')
+@section('title', 'Human Capital Servis')
 @section('content')
 
 <div class="section">
@@ -7,7 +7,7 @@
         <div class="row">
             <div class="card">
                 <div class="card-header">
-                    <h6>Edit data peserta :</h6>
+                    <h6>Lengkapi data peserta :</h6>
 
                 </div>
                 <div class="card-body">

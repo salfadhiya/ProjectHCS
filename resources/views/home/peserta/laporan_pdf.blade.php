@@ -70,7 +70,7 @@
 </head>
 <body>
     <h1>
-        @if($peserta->first()->status_keaktifan == 'Tidak Aktif')
+        @if($peserta->first()->status_keaktifan == 'tidak aktif')
               DATA PESERTA MAGANG OUT
         @else
               DATA PESERTA MAGANG IN
@@ -93,7 +93,7 @@
     </ul>
     <p style="text-align: center;"><strong>Catatan: Sertifikat akan dikirimkan apabila kelengkapan administrasi keluar sudah selesai.</strong></p>
     @else
-    <p style="text-align: center;"><strong>ini - aktif</strong></p>
+    {{-- <p style="text-align: center;"><strong>ini - aktif</strong></p> --}}
     @endif
 
     <div class="table-container">
@@ -103,17 +103,8 @@
                     <th>No</th>
                     <th>ID Presensi</th>
                     <th>Nama</th>
-                    {{-- <th>ID Apply</th> --}}
-                    {{-- <th>Nomor Kartu</th> --}}
-                    {{-- <th>Status Keaktifan</th> --}}
                     <th>Status Kepesertaan</th>
-                    {{-- <th>Jenis Kelamin</th> --}}
-                    {{-- <th>Gedung Penempatan</th> --}}
-                    {{-- <th>Pembimbing Perusahaan</th> --}}
-                    {{-- <th>Unit Penempatan</th> --}}
-                    {{-- <th>Jenis Pekerjaan</th> --}}
                     <th>Reguler / MSIB / Magenta</th>
-                    {{-- <th>Email</th> --}}
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Berakhir</th>
                 </tr>
@@ -123,18 +114,9 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $peserta->id_peserta }}</td>
-                        <td>{{ $peserta->onboarding->nama }}</td> <!-- Ganti dengan data yang sesuai -->
-                        {{-- <td>{{ $peserta->id_apply }}</td> --}}
-                        {{-- <td>{{ $peserta->nomor_kartu }}</td> --}}
-                        {{-- <td>{{ ucfirst($peserta->status_keaktifan) }}</td> --}}
+                        <td>{{ $peserta->onboarding->nama }}</td>
                         <td>{{ $peserta->status_kepesertaan }}</td>
-                        {{-- <td>{{ $peserta->jk }}</td> --}}
-                        {{-- <td>{{ $peserta->gdg_penempatan }}</td> --}}
-                        {{-- <td>{{ $peserta->pembimbing_perusahaan }}</td> --}}
-                        {{-- <td>{{ $peserta->unit_penempatan }}</td> --}}
-                        {{-- <td>{{ $peserta->jenis_pekerjaan }}</td> --}}
                         <td>{{ $peserta->reguler_msib }}</td>
-                        {{-- <td>{{ $peserta->email }}</td> --}}
                         <td>{{ $peserta->onboarding->tanggal_mulai }}</td>
                         <td>{{ $peserta->onboarding->tanggal_berakhir }}</td>
                     </tr>

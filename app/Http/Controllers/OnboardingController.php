@@ -17,13 +17,16 @@ class OnBoardingController extends Controller
         return view('home.onboarding.index',compact('onboarding'));
     }
 
-    public function interninfo()
+    public function interninfo(string $id_apply)
     {
+        $interninfo = InternInfo::where('id_apply', $id_apply)->first();
 
-        $interninfo = InternInfo::with('onboarding')->get();
-        return view('home.onboarding.interninfo',compact('interninfo'));
+        if (!$interninfo) {
+            return redirect('/onboarding')->with('error', 'Data tidak ditemukan.');
+        }
+
+        return view('home.onboarding.interninfo', compact('interninfo'));
     }
-
     /**
      * Show the form for creating a new resource.
      */

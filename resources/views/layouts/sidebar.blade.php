@@ -41,6 +41,8 @@
                     </a>
                 </li>
 
+            {{-- admin general --}}
+            @if (Auth::user()->role === 'Admin General')
                 <!-- Manajemen Akun -->
                 <li class="sidebar-title">Manajemen Akun</li>
                 <li class="sidebar-item {{ Request::is('user') ? 'active' : '' }}">
@@ -94,6 +96,82 @@
                         <span>Rekap Maintenance</span>
                     </a>
                 </li>
+                @endif
+
+
+            {{-- admin IN --}}
+            @if (Auth::user()->role === 'Admin IN')
+
+            <!-- Dokumentasi & Proses -->
+            <li class="sidebar-title">Dokumentasi & Proses</li>
+            <li class="sidebar-item {{ Request::is('kelengkapanadministrasi') ? 'active' : '' }}">
+                <a href="/kelengkapanadministrasi" class="sidebar-link">
+                    <i class="bi bi-file-earmark-lock"></i>
+                    <span>Kelengkapan Administrasi</span>
+                </a>
+            </li>
+            <li class="sidebar-item {{ Request::is('onboarding') ? 'active' : '' }}">
+                <a href="/onboarding" class="sidebar-link">
+                    <i class="bi bi-list-check"></i>
+                    <span>Proses Onboarding</span>
+                </a>
+            </li>
+            @endif
+
+
+              {{-- admin maintenance --}}
+              @if (Auth::user()->role === 'Admin Maintenace')
+              <!-- Data Peserta -->
+              <li class="sidebar-title">Data Peserta</li>
+              <li class="sidebar-item {{ Request::is('peserta') ? 'active' : '' }}">
+                  <a href="/peserta" class="sidebar-link">
+                      <i class="bi bi-person-check"></i>
+                      <span>Peserta Aktif</span>
+                  </a>
+              </li>
+              <li class="sidebar-item {{ Request::is('peserta/nonaktif') ? 'active' : '' }}">
+                  <a href="/peserta/nonaktif" class="sidebar-link">
+                      <i class="bi bi-person-dash"></i>
+                      <span>Peserta Tidak Aktif</span>
+                  </a>
+              </li>
+              <li class="sidebar-item {{ Request::is('absensi') ? 'active' : '' }}">
+                  <a href="/absensi" class="sidebar-link">
+                      <i class="bi bi-calendar-check"></i>
+                      <span>Presensi</span>
+                  </a>
+              </li>
+
+              <!-- Laporan -->
+              <li class="sidebar-title">Laporan</li>
+              <li class="sidebar-item {{ Request::is('maintenance') ? 'active' : '' }}">
+                  <a href="/maintenance" class="sidebar-link">
+                      <i class="bi bi-tools"></i>
+                      <span>Rekap Maintenance</span>
+                  </a>
+              </li>
+              @endif
+
+
+                  {{-- admin out --}}
+                  @if (Auth::user()->role === 'Admin OUT')
+
+            <!-- Data Peserta -->
+            <li class="sidebar-title">Data Peserta</li>
+            <li class="sidebar-item {{ Request::is('peserta') ? 'active' : '' }}">
+                <a href="/peserta" class="sidebar-link">
+                    <i class="bi bi-person-check"></i>
+                    <span>Peserta Aktif</span>
+                </a>
+            </li>
+            <li class="sidebar-item {{ Request::is('peserta/nonaktif') ? 'active' : '' }}">
+                <a href="/peserta/nonaktif" class="sidebar-link">
+                    <i class="bi bi-person-dash"></i>
+                    <span>Peserta Tidak Aktif</span>
+                </a>
+            </li>
+            @endif
+
 
                 <!-- Logout -->
                 <li class="sidebar-title">Sistem</li>

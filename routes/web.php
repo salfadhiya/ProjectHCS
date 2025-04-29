@@ -77,21 +77,21 @@ Route::get('/absensi/succes', function () {return view('home.absensi.succes');})
         Route::put('/onboarding/{id}/update', [OnboardingController::class, 'update'])->name('onboarding.update');
 
         // Rute untuk menghapus data onboarding berdasarkan ID
-        Route::delete('/onboarding/{id}/destroy', [OnboardingController::class, 'destroy'])->name('onboarding.destroy');
+        Route::get('/onboarding/{id}/destroy', [OnboardingController::class, 'destroy'])->name('onboarding.destroy');
 
-        Route::get('/onboarding/interninfo', [OnboardingController::class, 'interninfo'])->name('onboarding.interninfo');
+        Route::get('/onboarding/{id_apply}/interninfo', [OnboardingController::class, 'interninfo'])->name('onboarding.interninfo');
         Route::get('/onboarding/interntambah', [OnboardingController::class, 'tambahinterninfo'])->name('onboarding.interntambah');
         Route::post('/onboarding/internsimpan', [OnboardingController::class, 'internsimpan'])->name('onboarding.internsimpan');
         Route::get('/onboarding/{id_apply}/internedit', [OnboardingController::class, 'editinterninfo'])->name('onboarding.internedit');
-        Route::post('/onboarding/{id_apply}/interupdate', [OnboardingController::class, 'updateinterninfo'])->name('onboarding.internupdate');
+        Route::post('/onboarding/{id_apply}/internupdate', [OnboardingController::class, 'updateinterninfo'])->name('onboarding.internupdate');
 
 
 
         // rut rekapan Maintenance
 Route::get('/maintenance', [MaintenanceController::class, 'index'])->name('maintenance.index');
-Route::get('/maintenance/{id_peserta}/edit', [MaintenanceController::class, 'edit'])->name('maintenance.edit');
-Route::put('/maintenance/{id_peserta}', [MaintenanceController::class, 'update'])->name('maintenance.update');
-Route::delete('/maintenance/{id_peserta}', [MaintenanceController::class, 'destroy'])->name('maintenance.destroy');
+Route::get('/maintenance/{id}/edit', [MaintenanceController::class, 'edit'])->name('maintenance.edit');
+Route::put('/maintenance/{id}/update', [MaintenanceController::class, 'update'])->name('maintenance.update');
+Route::get('/maintenance/{id}/delete', [MaintenanceController::class, 'destroy'])->name('maintenance.destroy');
 
 
 //route kelengkapan administrasi

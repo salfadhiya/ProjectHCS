@@ -50,13 +50,14 @@
                                             <a href="/onboarding/{{$data->id_apply}}/edit" class="btn btn-sm btn-outline-warning me-1" title="Edit">
                                                 <i class="bi bi-pencil-square me-1"></i>
                                             </a>
-                                            <a href="/onboarding/{{$data->id_apply}}/edit" class="btn btn-sm btn-outline-success me-1" title="Edit">
+                                            <a href="/onboarding/{{$data->id_apply}}/interninfo" class="btn btn-sm btn-outline-success me-1" title="Selengkapnya">
                                                 <i class="bi bi-arrow-left-circle me-2"></i>
                                             </a>
 
-                                            <button class="btn btn-sm btn-outline-danger delete-btn" data-id="{{ $data->id }}" title="Hapus">
+
+                                            <a href="/onboarding/{{$data->id_apply}}/destroy" class="btn btn-sm btn-outline-danger delete-btn" data-id="{{ $data->id }}" title="Delete">
                                                 <i class="bi bi-trash"></i>
-                                            </button>
+                                            </a>
 
                                             {{-- <!-- Tombol Hapus -->
                                             <form action="{{ route('onboarding.destroy', $data->id_apply) }}" method="POST" style="display:inline;">

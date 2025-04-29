@@ -50,13 +50,15 @@
                                             <span class="badge bg-secondary">{{ $user->role }}</span>
                                         @endif
                                     </td>
-                                        <td class="text-center">
+                                    <td class="text-center">
                                         <a href="/user/{{ $user->id }}/edit" class="btn btn-sm btn-outline-warning me-1" title="Edit">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-                                        <button class="btn btn-sm btn-outline-danger delete-btn" data-id="{{ $user->id }}" title="Hapus">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
+                                        @if(Auth::id() !== $user->id)
+                                            <button class="btn btn-sm btn-outline-danger delete-btn" data-id="{{ $user->id }}" title="Hapus">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

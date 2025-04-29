@@ -1,85 +1,106 @@
 @extends('layouts.master')
-@section('title', 'Onboarding (Private) - Human Capital Service')
+@section('title', 'Human Capital Service')
 @section('content')
 
 <div class="section">
-    <div class="col-12 col-lg-12">
-        <div class="row">
-            <div class="card">
-                <div class="card-header">
-
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h4>Berikut data On Boarding (Private) :</h4>
-                        <div class="d-flex gap-2">
-                            {{-- <a href="/onboarding/interntambah" class="btn btn-primary">Tambah Data On Boarding (Private)</a> --}}
-                            <a href="/onboarding" class="btn btn-info">Kembali</a>
-                        </div>
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 fw-semibold text-uppercase">Data Peserta OnBoarding Private</h5>
+                    <div class="d-flex gap-2">
+                        <a href="{{ url('/onboarding') }}" class="btn btn-outline-secondary btn-sm">
+                            <i class="bx bx-arrow-back"></i> Kembali
+                        </a>
+                        <button form="form-update" type="submit" class="btn btn-primary btn-sm">
+                            <i class="bx bx-edit-alt"></i> Lengkapi Data
+                        </button>
                     </div>
-
-                    {{-- <a href="/onboarding/interntambah" class="btn btn-primary">Tambah Data On Boarding (Private)</a>
-                    <br><br>
-                    <h6>Berikut data admin :</h6> --}}
                 </div>
+
                 <div class="card-body">
-                    <div class="table-responsive px-3">
-                    <table class="table table-striped table-bordered mb-0" id="table1">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nomor Form</th>
-                                <th>Nama</th>
-                                <th>NIS/NIM/NIP</th>
-                                <th>Kompetensi Keahlian</th>
-                                <th>Katengori Peserta</th>
-                                <th>Tanggal Pengajuan</th>
-                                <th>Tanggal Mulai</th>
-                                <th>Tanggal Berakhir</th>
-                                <th>Nilai Psikotes</th>
-                                <th>Nilai Wawancara</th>
-                                <th>Hasil Seleksi</th>
-                                <th>Nomor Surat Konfirmasi</th>
-                                <th>Tanggal Surat Konfirmasi</th>
-                                <th>Link Surat Konfirmasi</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($interninfo as $interninfo)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $interninfo->nomor_form }}</td>
-                                    <td>{{ $interninfo->onboarding->nama ?? 'Tidak Ada Data' }}</td>
-                                    <td>{{ $interninfo->nis_nim_nip }}</td>
-                                    <td>{{ $interninfo->onboarding->jurusan ?? 'Tidak Ada Data' }}</td>
-                                    <td>{{ $interninfo->kategori_peserta }}</td>
-                                    <td>{{ $interninfo->tanggal_pengajuan }}</td>
-                                    <td>{{ $interninfo->onboarding->tanggal_mulai }}</td>
-                                    <td>{{ $interninfo->onboarding->tanggal_berakhir }}</td>
-                                    <td>{{ $interninfo->nilai_psikotes }}</td>
-                                    <td>{{ $interninfo->nilai_wawancara }}</td>
-                                    <td>{{ $interninfo->hasil_seleksi }}</td>
-                                    <td>{{ $interninfo->nomor_surat_konfirmasi }}</td>
-                                    <td>{{ $interninfo->tanggal_surat_konfirmasi }}</td>
+                    <form id="form-update" action="{{ route('onboarding.internupdate', $interninfo->id_apply) }}" method="POST">
+                        @csrf
+                        <div class="row g-4">
+                            {{-- Kolom Kiri --}}
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">ID Apply</label>
+                                    <input type="text" class="form-control" value="{{ $interninfo->id_apply }}" readonly>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">Nama</label>
+                                    <input type="text" class="form-control" value="{{ $interninfo->onboarding->nama }}" readonly>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">NIS/NIM/NIP</label>
+                                    <input type="text" class="form-control" name="nis_nim_nip" value="{{ $interninfo->nis_nim_nip }}">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">Jurusan</label>
+                                    <input type="text" class="form-control" value="{{ $interninfo->onboarding->jurusan }}" readonly>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">Kategori Peserta</label>
+                                    <select id="kategori_peserta" name="kategori_peserta" class="form-select">
+                                        <option value="PKL" {{ $interninfo->onboarding->kategori_peserta == 'PKL' ? 'selected' : '' }}>PKL</option>
+                                        <option value="KP" {{ $interninfo->onboarding->kategori_peserta == 'KP' ? 'selected' : '' }}>KP</option>
+                                        <option value="TA" {{ $interninfo->onboarding->kategori_peserta == 'TA' ? 'selected' : '' }}>TA</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">Tanggal Pengajuan</label>
+                                    <input type="date" class="form-control" name="tanggal_pengajuan" value="{{ $interninfo->tanggal_pengajuan }}">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">Tanggal Mulai</label>
+                                    <input type="date" class="form-control" name="tanggal_mulai" value="{{ $interninfo->tanggal_mulai }}">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">Tanggal Berakhir</label>
+                                    <input type="date" class="form-control" name="tanggal_berakhir" value="{{ $interninfo->tanggal_berakhir }}">
+                                </div>
+                            </div>
 
-                                        {{-- <a href="/interninfo/{{$interninfo->id}}/edit"
-                                            class="btn btn-warning">Edit</a> --}}
-                                            <td><a href="{{ $interninfo->link_surat_konfirmasi }}" target="_blank">Lihat Surat</a></td>
-                                            <td>
-                                                <a href="/onboarding/{{$interninfo->id_apply}}/internedit" class="btn btn-warning">Edit</a>
-                                            </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-
-
-                </div>
-            </div>
+                            {{-- Kolom Kanan --}}
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">Nilai Psikotes</label>
+                                    <input type="text" class="form-control" name="nilai_psikotes" value="{{ $interninfo->nilai_psikotes }}">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">Nilai Wawancara</label>
+                                    <input type="text" class="form-control" name="nilai_wawancara" value="{{ $interninfo->nilai_wawancara }}">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">Hasil Seleksi</label>
+                                    <input type="text" class="form-control" name="hasil_seleksi" value="{{ $interninfo->hasil_seleksi }}">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">Nomor Surat Konfirmasi</label>
+                                    <input type="text" class="form-control" name="nomor_surat_konfirmasi" value="{{ $interninfo->nomor_surat_konfirmasi }}">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">Tanggal Surat Konfirmasi</label>
+                                    <input type="date" class="form-control" name="tanggal_surat_konfirmasi" value="{{ $interninfo->tanggal_surat_konfirmasi }}">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-semibold">Link Surat Konfirmasi</label>
+                                    @if($interninfo->link_surat_konfirmasi)
+                                        <a href="{{ $interninfo->link_surat_konfirmasi }}" target="_blank" class="btn btn-outline-primary w-100">
+                                            Lihat Surat
+                                        </a>
+                                    @else
+                                        <input type="text" class="form-control" value="Tidak Ada" readonly>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div> <!-- end card-body -->
+            </div> <!-- end card -->
         </div>
     </div>
 </div>
-
-
-
-
 
 @endsection
