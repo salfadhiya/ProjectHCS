@@ -120,7 +120,7 @@
 
 
               {{-- admin maintenance --}}
-              @if (Auth::user()->role === 'Admin Maintenace')
+              @if (Auth::user()->role === 'Admin Maintenance')
               <!-- Data Peserta -->
               <li class="sidebar-title">Data Peserta</li>
               <li class="sidebar-item {{ Request::is('peserta') ? 'active' : '' }}">
@@ -176,12 +176,10 @@
                 <!-- Logout -->
                 <li class="sidebar-title">Sistem</li>
                 <li class="sidebar-item mt-4">
-                    <button type="submit" id="logout-btn"
-                        class="sidebar-link d-flex align-items-center gap-2 text-danger px-3 py-2 w-100"
-                        style="background-color: transparent; border: none; font-weight: 500; font-size: 0.95rem;">
-                        <i class="bi bi-box-arrow-right"></i>
-                        <span>Logout</span>
-                    </button>
+                    <a href="/logout" id="logout-btn" class="sidebar-link d-flex align-items-center gap-2 text-danger px-3 py-2 w-100" style="background-color: transparent; border: none; font-weight: 500; font-size: 0.95rem;">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Logout</span>
+                    </a>
                 </li>
             </ul>
         </div>
